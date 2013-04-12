@@ -1,0 +1,43 @@
+<html>
+<head>
+<script type="text/javascript" src="http://www.google.com/jsapi">
+</script>
+
+<script type="text/javascript">
+google.load("feeds", "1") //Load Google Ajax Feed API (version 1)
+</script>
+<script type="text/javascript">
+
+var feedcontainer=document.getElementById("feeddiv")
+var feedurl="http://rss.slashdot.org/Slashdot/slashdot"
+var feedlimit=5
+var rssoutput="<b>Latest Slashdot News:</b><br /><ul>"
+
+function rssfeedsetup(){
+var feedpointer=new google.feeds.Feed(feedurl) //Google Feed API method
+feedpointer.setNumEntries(feedlimit) //Google Feed API method
+feedpointer.load(displayfeed) //Google Feed API method
+}
+
+function displayfeed(result){
+if (!result.error){
+var thefeeds=result.feed.entries
+for (var i=0; i<thefeeds.length; i++)
+rssoutput+="<li><a href='" + thefeeds[i].link + "'>" + thefeeds[i].title + "</a></li>"
+rssoutput+="</ul>"
+feedcontainer.innerHTML=rssoutput
+}
+else
+alert("Error fetching feeds!")
+}
+
+window.onload=function(){
+rssfeedsetup()
+}
+
+</script>
+</head>
+<body>
+<div id="feeddiv"></div>
+</body>
+</html>
