@@ -30,12 +30,7 @@
 </head>
 
 <body>
-
-		<div id="myblog"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-		<div id="smash"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-		<div id="creattica"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-		<div id="iconfind"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-
+<div id="myblog"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div><div id="smash"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
 
 </body>
 </html>
@@ -51,24 +46,8 @@ $('#myblog').rss_slide_show({
 $('#smash').rss_slide_show({
 	rsslink: 'http://cafe.daum.net/xml/rss/5dragon1004/Hz91',
 	limit: 10,
-	effect: 'slideVert',
+	effect: 'slideVert', //slideHorz, none
 	navigation: 2,
-	timer: 8000
-});
-
-$('#creattica').rss_slide_show({
-	rsslink: 'http://feeds.feedburner.com/Faveup-LatestDesigns',
-	limit: 10,
-	effect: 'none',
-	navigation: 1,
-	timer: 8000
-});
-
-$('#iconfind').rss_slide_show({
-	rsslink: 'http://www.iconfinder.com/iconfinder-rss.xml',
-	limit: 10,
-	effect: 'slideHorz',
-	navigation: 1,
 	timer: 8000
 });
 
