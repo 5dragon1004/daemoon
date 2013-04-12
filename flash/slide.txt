@@ -10,7 +10,7 @@
 &// info 를 입력하면 세부 정보를 보여줍니다.
 & ____________________________________________
 
-&var_images=5
+&var_images=2
 &// 이미지(화면) 갯수
 
 &var_img_rand=1
@@ -21,25 +21,6 @@
 ;http://cfile275.uf.daum.net/image/0376FD4E5157C5B7254AAE
 ;http://cfile300.uf.daum.net/image/186D954E5157C5B935A1FC
 ;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
-;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
 
 &// 이미지는 ; 으로 구분.
 &// 50개까지 입력할 수 있습니다.
@@ -49,12 +30,7 @@
 &var_b2_title=MUSIC VIDEO
 &var_b3_title=OFF TOPICS
 &var_b4_title=RSS FEED
-&var_b5_title=타이틀 명을 입력하세요.
-&var_b6_title=타이틀 명을 입력하세요.
-&var_b7_title=타이틀 명을 입력하세요.
-&var_b8_title=타이틀 명을 입력하세요.
-&var_b9_title=타이틀 명을 입력하세요.
-&var_b10_title=타이틀 명을 입력하세요.
+
 &// var_b0_title -> 1번 화면 타이틀, var_b1_title -> 2번 화면 타이틀
 &// 대문자와 띄어쓰기만 사용가능.
 
@@ -63,16 +39,11 @@
 &var_b2_url=/TSMV
 &var_b3_url=/TSBBS
 &var_b4_url=/rss
-&var_b5_url=주소를 입력하세요.
-&var_b6_url=주소를 입력하세요.
-&var_b7_url=주소를 입력하세요.
-&var_b8_url=주소를 입력하세요.
-&var_b9_url=주소를 입력하세요.
-&var_b10_url=주소를 입력하세요.
+
 &// 연결할 링크
 &// Naver 는 작동하지 않음.
 
-&var_window_open=_self
+&var_window_open=_blank
 &// 현재창은 _self, 새창은 _blank
 &// Daum 에서는 _blank 로 해야 창이 열립니다.
 
@@ -80,13 +51,7 @@
 &var_b1_txt=Taylor Swift News; Get the latest Taylor Swift news. pictures, videos and learn all about Taylor Swift from Hollyscoop, your celebrity news source.
 &var_b2_txt=Taylor Swift Music Videos; Watch the Taylor Swift music videos: Love Story, You Belong With Me, Our Song. 'We were both young when I first saw you'
 &var_b3_txt=Off Topics; What's Your Story? Write your experiences, loved ones. You can talk about anything. we want to know who you are.
-&var_b4_txt=Get a RSS; 내용을 입력하세요.
-&var_b5_txt=내용을 입력하세요.
-&var_b6_txt=내용을 입력하세요.
-&var_b7_txt=내용을 입력하세요.
-&var_b8_txt=내용을 입력하세요.
-&var_b9_txt=내용을 입력하세요.
-&var_b10_txt=내용을 입력하세요.
+&var_b4_txt=Get a RSS
 &// 하단 텍스트 (줄바꿈 기호는 ; 사용)
 
 & ____________________________________________
