@@ -1,8 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
 
 <link href="dynamic_rssfeeds.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
@@ -30,17 +28,13 @@
 </head>
 
 <body>
+<table>
+	<tr>
+		<td><div id="myblog"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div></td>
+		<td><div id="smash"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div></td>
+	</tr>
+</table>
 
-<div class="main_container">
-	<div class="instruct_content">Dynamic RSS Feed Slideshow <br /> JQuery Plugin</div>
-	<div class="all_rss">
-		<div id="myblog"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-		<div id="smash"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-		<div id="creattica"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-		<div id="iconfind"><div align="center"><img src="images/loading.gif" border="0" alt="" /></div></div>
-	</div>
-	<div class="clear">&nbsp;</div>
-</div>
 
 </body>
 </html>
@@ -49,31 +43,15 @@ $('#myblog').rss_slide_show({
 	rsslink: 'http://cafe.daum.net/xml/rss/5dragon1004/I0hv',
 	limit: 10,
 	effect: 'fade',
-	navigation: 1,
+	navigation: 2,
 	timer: 8000
 });
 
 $('#smash').rss_slide_show({
 	rsslink: 'http://cafe.daum.net/xml/rss/5dragon1004/Hz91',
 	limit: 10,
-	effect: 'slideVert',
-	navigation: 1,
-	timer: 8000
-});
-
-$('#creattica').rss_slide_show({
-	rsslink: 'http://feeds.feedburner.com/Faveup-LatestDesigns',
-	limit: 10,
-	effect: 'none',
-	navigation: 1,
-	timer: 8000
-});
-
-$('#iconfind').rss_slide_show({
-	rsslink: 'http://www.iconfinder.com/iconfinder-rss.xml',
-	limit: 10,
-	effect: 'slideHorz',
-	navigation: 1,
+	effect: 'slideVert', //slideHorz, none
+	navigation: 2,
 	timer: 8000
 });
 

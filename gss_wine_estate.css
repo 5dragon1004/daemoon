@@ -1,0 +1,14 @@
+.gss_wine_estate a img
+{
+border : none;
+}
+
+.gss_wine_estate
+{
+width: 458px;
+height: 412px;
+color: #dddddd;
+background-color: #c3d9ff;
+border: 1px solid red;
+padding: 4px;
+}

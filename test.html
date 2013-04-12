@@ -1,1 +1,39 @@
-<embed src="flash/slide.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="800" height="300" flashvars="var_url_txt=flash/slide.txt"></embed>
+<html>
+<head>
+<link href="gss_wine_estate.css" rel="stylesheet" type="text/css">
+
+<script src="http://www.google.com/jsapi" type="text/javascript">
+</script>
+
+<script src="http://www.google.com/uds/solutions/slideshow/gfslideshow.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+
+function load_wine_estate()
+{
+var feed_photobucket = "http://cafe.daum.net/xml/rss/5dragon1004/I0hv";
+
+var options = {
+fullControlPanel: true,
+fullControlPanelSmallIcons: true,
+thumbnailSize : GFslideShow.THUMBNAILS_LARGE,
+pauseOnHover: true,
+displayTime: 3000,
+transitionTime: 1000,
+linkTarget : google.feeds.LINK_TARGET_BLANK
+};
+
+new GFslideShow(feed_photobucket, "wine_estate", options);
+}
+
+google.load("feeds", "1");
+google.setOnLoadCallback(load_wine_estate);
+
+</script>
+</head>
+<body>
+
+<div id="wine_estate" class="gss_wine_estate">Loading pictures...</div>
+</body>
+</html>
