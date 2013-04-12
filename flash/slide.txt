@@ -1,7 +1,7 @@
-&url_swf=http://fs.textcube.com/blog/2/26747/attach/XcVspoibtE.swf
+&url_swf=http://5dragon1004.github.io/daemoon/flash/slide.swf
 &// slide.swf 주소
 
-&snow_swf=http://fs.textcube.com/blog/2/26747/attach/XBRi8tl7g5.swf
+//&snow_swf=http://fs.textcube.com/blog/2/26747/attach/XBRi8tl7g5.swf
 &// snow.swf 주소 (눈내리는 효과를 없앨려면 지워주세요)
 
 & ____________________________________________
@@ -16,30 +16,31 @@
 &var_img_rand=1
 &// 1은 랜덤, 0은 순차적으로 이미지를 출력합니다.
 
-&var_image_url=http://fs.textcube.com/blog/2/26747/attach/XI0HouTlnu.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XCyNwNCume.jpg
-;http://fs.textcube.com/blog/2/26747/attach/Xb34uaRkXM.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XZTfprCGRw.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XKotK5Sua3.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XPMstvUIp6.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XTkJXTjpo7.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XPIEprTCN2.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XRXlHSj7s9.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XalwiwhFBV.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XT1ktrRDoU.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XFOOAVBaVh.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XbDpxbgrha.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XMjjRHkYtW.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XPkWinXMF9.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XcnchZHlWi.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XefpZ0WtFT.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XDAx7Tl52S.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XEkGEQ3Gjo.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XMZDi0jmb0.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XUutrvBWAj.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XZQaNv0qb0.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XMFFjfzLEo.jpg
-;http://fs.textcube.com/blog/2/26747/attach/XQdDWyyFMV.jpg
+&var_image_url=http://cfile289.uf.daum.net/image/113BA84C5157C63E2A0B84
+;http://cfile297.uf.daum.net/image/1571AD4E5157C5B62EB719
+;http://cfile275.uf.daum.net/image/0376FD4E5157C5B7254AAE
+;http://cfile300.uf.daum.net/image/186D954E5157C5B935A1FC
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+;http://cfile299.uf.daum.net/image/2242B54D5157C5382B15CA
+
 &// 이미지는 ; 으로 구분.
 &// 50개까지 입력할 수 있습니다.
 
