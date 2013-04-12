@@ -1,7 +1,0 @@
-﻿&hanrss=http://www.hanrss.com/add_sub.qst?url=http://jihansome.tistory.com/rss
-&google=http://fusion.google.com/add?feedurl=http://jihansome.tistory.com/rss
-&feedburnur=http://feeds.feedburner.com/jihansome
-&daumview=http://bloggernews.media.daum.net/reporter/jihansome92
-&blogkorea=http://www.blogkorea.net/bnmsvc/user_bloglist.do?userNum=395298
-&allblog=http://search.allblog.net/?keyword=jihansome
-&mixi=http://mixsh.com/media/11324

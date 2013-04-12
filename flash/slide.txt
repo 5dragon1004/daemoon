@@ -1,0 +1,128 @@
+&url_swf=http://fs.textcube.com/blog/2/26747/attach/XcVspoibtE.swf
+&// slide.swf 주소
+
+&snow_swf=http://fs.textcube.com/blog/2/26747/attach/XBRi8tl7g5.swf
+&// snow.swf 주소 (눈내리는 효과를 없앨려면 지워주세요)
+
+& ____________________________________________
+
+&var_var_test=;info
+&// info 를 입력하면 세부 정보를 보여줍니다.
+& ____________________________________________
+
+&var_images=5
+&// 이미지(화면) 갯수
+
+&var_img_rand=1
+&// 1은 랜덤, 0은 순차적으로 이미지를 출력합니다.
+
+&var_image_url=http://fs.textcube.com/blog/2/26747/attach/XI0HouTlnu.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XCyNwNCume.jpg
+;http://fs.textcube.com/blog/2/26747/attach/Xb34uaRkXM.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XZTfprCGRw.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XKotK5Sua3.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XPMstvUIp6.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XTkJXTjpo7.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XPIEprTCN2.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XRXlHSj7s9.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XalwiwhFBV.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XT1ktrRDoU.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XFOOAVBaVh.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XbDpxbgrha.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XMjjRHkYtW.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XPkWinXMF9.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XcnchZHlWi.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XefpZ0WtFT.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XDAx7Tl52S.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XEkGEQ3Gjo.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XMZDi0jmb0.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XUutrvBWAj.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XZQaNv0qb0.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XMFFjfzLEo.jpg
+;http://fs.textcube.com/blog/2/26747/attach/XQdDWyyFMV.jpg
+&// 이미지는 ; 으로 구분.
+&// 50개까지 입력할 수 있습니다.
+
+&var_b0_title=NEW PICTURES
+&var_b1_title=SWIFT NEWS
+&var_b2_title=MUSIC VIDEO
+&var_b3_title=OFF TOPICS
+&var_b4_title=RSS FEED
+&var_b5_title=타이틀 명을 입력하세요.
+&var_b6_title=타이틀 명을 입력하세요.
+&var_b7_title=타이틀 명을 입력하세요.
+&var_b8_title=타이틀 명을 입력하세요.
+&var_b9_title=타이틀 명을 입력하세요.
+&var_b10_title=타이틀 명을 입력하세요.
+&// var_b0_title -> 1번 화면 타이틀, var_b1_title -> 2번 화면 타이틀
+&// 대문자와 띄어쓰기만 사용가능.
+
+&var_b0_url=/TSPictures
+&var_b1_url=/TSNews
+&var_b2_url=/TSMV
+&var_b3_url=/TSBBS
+&var_b4_url=/rss
+&var_b5_url=주소를 입력하세요.
+&var_b6_url=주소를 입력하세요.
+&var_b7_url=주소를 입력하세요.
+&var_b8_url=주소를 입력하세요.
+&var_b9_url=주소를 입력하세요.
+&var_b10_url=주소를 입력하세요.
+&// 연결할 링크
+&// Naver 는 작동하지 않음.
+
+&var_window_open=_self
+&// 현재창은 _self, 새창은 _blank
+&// Daum 에서는 _blank 로 해야 창이 열립니다.
+
+&var_b0_txt=Taylor Swift's Photos; Appearances, photoshoots, scans, cnadids, concerts, screen captures. There're many new pictures.
+&var_b1_txt=Taylor Swift News; Get the latest Taylor Swift news. pictures, videos and learn all about Taylor Swift from Hollyscoop, your celebrity news source.
+&var_b2_txt=Taylor Swift Music Videos; Watch the Taylor Swift music videos: Love Story, You Belong With Me, Our Song. 'We were both young when I first saw you'
+&var_b3_txt=Off Topics; What's Your Story? Write your experiences, loved ones. You can talk about anything. we want to know who you are.
+&var_b4_txt=Get a RSS; 내용을 입력하세요.
+&var_b5_txt=내용을 입력하세요.
+&var_b6_txt=내용을 입력하세요.
+&var_b7_txt=내용을 입력하세요.
+&var_b8_txt=내용을 입력하세요.
+&var_b9_txt=내용을 입력하세요.
+&var_b10_txt=내용을 입력하세요.
+&// 하단 텍스트 (줄바꿈 기호는 ; 사용)
+
+& ____________________________________________
+
+	* 여기서부터 세부설정 입니다.
+	* 디폴트값을 쓰시길 권합니다.
+& ____________________________________________
+
+&var_img_width=
+&// 값을 입력하면 이미지 너비를 수동으로 잡아줍니다.
+
+&var_buttons_width=32
+&// 버튼의 너비(수정하면 @ Width_i 및 @ img_width 값을 체크하세요), default 33
+
+&var_select_start=1
+&// 시작화면, default 1
+
+&var_loading_slide=0
+&// 왼쪽 로딩: 0 | 오른쪽 로딩: 1, default 0
+
+&var_bar_x=40
+&// bar 왼쪽 여백, default 40
+
+&var_txt_x=7
+&// 세로 텍스트의 여백, default 7
+
+&var_bar_y=10
+&// bar 위 여백, default 10
+
+&var_b_button_out=70
+&// 버튼의 알파값 (rollout), default 70
+
+
+
+&//flashvars=var_url_txt
+&var_=;images;img_width;img_rand;image_url;window_open;buttons_width;select_start;loading_slide;txt_x;bar_x;var_test;bar_y;b_button_out;
+;b0_title;b1_title;b2_title;b3_title;b4_title;b5_title;b6_title;b7_title;b8_title;b9_title;b10_title;
+;b0_url;b1_url;b2_url;b3_url;b4_url;b5_url;b6_url;b7_url;b8_url;b9_url;b10_url;
+;b0_txt;b1_txt;b2_txt;b3_txt;b4_txt;b5_txt;b6_txt;b7_txt;b8_txt;b9_txt;b10_txt;
+&// 변수의 종류 (수정하지 마세요.)
