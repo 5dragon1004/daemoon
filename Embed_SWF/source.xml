@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SlideshowBox>
+	<items>
+		<item>
+			<thumbnailPath>../../../Sample/images/image01.jpg</thumbnailPath>
+			<largeImagePath>../../../Sample/images/image01.jpg</largeImagePath>
+			<fullScreenImagePath>../../../Sample/images/image01.jpg</fullScreenImagePath>
+			<title><![CDATA[Image 1]]></title>
+			<description><![CDATA[Description for image 1]]></description>
+		</item>
+		<item>
+			<thumbnailPath>../../../Sample/images/image02.jpg</thumbnailPath>
+			<largeImagePath>../../../Sample/images/image02.jpg</largeImagePath>
+			<fullScreenImagePath>../../../Sample/images/image02.jpg</fullScreenImagePath>
+			<title><![CDATA[Image 2]]></title>
+			<description><![CDATA[Description for image 2]]></description>
+		</item>
+		<item>
+			<thumbnailPath>../../../Sample/images/image03.jpg</thumbnailPath>
+			<largeImagePath>../../../Sample/images/image03.jpg</largeImagePath>
+			<fullScreenImagePath>../../../Sample/images/image03.jpg</fullScreenImagePath>
+			<title><![CDATA[Image 3]]></title>
+			<description><![CDATA[Description for image 3]]></description>
+		</item>
+		<item>
+			<thumbnailPath>../../../Sample/images/image04.jpg</thumbnailPath>
+			<largeImagePath>../../../Sample/images/image04.jpg</largeImagePath>
+			<fullScreenImagePath>../../../Sample/images/image04.jpg</fullScreenImagePath>
+			<title><![CDATA[Image 4]]></title>
+			<description><![CDATA[Description for image 4]]></description>
+		</item>
+		<item>
+			<thumbnailPath>../../../Sample/images/image05.jpg</thumbnailPath>
+			<largeImagePath>../../../Sample/images/image05.jpg</largeImagePath>
+			<fullScreenImagePath>../../../Sample/images/image05.jpg</fullScreenImagePath>
+			<title><![CDATA[Image 5]]></title>
+			<description><![CDATA[Description for image 5]]></description>
+		</item>
+	</items>
+</SlideshowBox>
