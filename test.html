@@ -24,7 +24,80 @@ document.domain = "daum.net";
         <div id="content" class="main">
                 	
             <div id="intro2"><div class="intro_con2">
-            
+	<script type="text/javascript">//<![CDATA[
+	function getViewerLayout() {
+		var layoutNum = "2";
+		return layoutNum;
+	}
+	
+	function setViewerHeight(height, obj){
+		var flashObj = (!obj) ? document.getElementById('mocha_viewer') : document.getElementById(obj);
+		flashObj.height = height+"px";
+	}
+		(function(){
+	    /*
+	     * getStyle function based on by PPK
+	     * http://www.quirksmode.org/dom/getstyles.html
+	     */
+	    	    	    function getStyle(e, cssProperty, mozCssProperty){           
+	        var mozCssProperty = mozCssProperty || cssProperty
+	        return (e.currentStyle) ? e.currentStyle[cssProperty] : document.defaultView.getComputedStyle(e, null).getPropertyValue(mozCssProperty);  
+	    }
+		
+	    function rgb2hex(rgbstr){
+	        function toHex(n){
+	            if(n == null){
+	                return "00";
+	            }
+	            n = parseInt(n);
+	            if(n == 0 || isNaN(n)){
+	                return "00";
+	            }
+	            n = Math.max(0,n);
+	            n = Math.min(n,255);
+	            n = Math.round(n);
+	            return "0123456789ABCDEF".charAt((n - n % 16) / 16) + "0123456789ABCDEF".charAt(n % 16);
+	        }
+	        
+	        var result = rgbstr.match(/^\s*rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*/);
+	        if(result == null || result.length != 4){
+	            return "#000000";
+	        }
+	        return "#" + toHex(result[1]) + toHex(result[2]) + toHex(result[3]);
+	    }
+                function hexColorFilter(color){
+            if(color.match(/rgb\([0-9,\s]+\)/)){
+                return rgb2hex(color);
+            }else{
+                return color;
+            }
+        }
+		
+		window.getPageBackgroundColor = function(){
+		    var optStyleColor = "#ffffff";
+            var color = (optStyleColor == "") ? getStyle(document.body, "backgroundColor", "background-color") : optStyleColor;
+            return hexColorFilter(color);
+	    }
+	    window.getPageDefaultFontColor = function(){
+	        var optStyleColor = "#444444";
+            var color = (optStyleColor == "") ? getStyle(document.body, "color") : optStyleColor;
+            return hexColorFilter(color);
+	    }
+        
+        	    if(typeof(window.daum) == "undefined"){ window.daum = new Object(); }
+	    if(typeof(window.daum.Browser) == "undefined"){
+	        window.daum.Browser = new Object();
+		    window.daum.Browser.ie = (navigator.userAgent.toLowerCase().indexOf("msie") != -1);
+	    }
+        	    
+    })(); 
+	
+	function getCafeHostForFlash() {
+		var node = "cafe469";
+		return node + ".daum.net";
+	}
+//]]>
+</script>            
 
 <!-- 카페 대문 -->
 <script type="text/javascript">// <![CDATA[
@@ -124,54 +197,7 @@ CAFEAPP.ui = { "SERVERNAME" : "cafe469.daum.net" };
 		<span class="more_tit"><a href="/_c21_/movie_bbs_list?grpid=1Rrvk" onclick="caller(this.href);return false;" class="more"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="15" height="15" alt="더보기" class="more_img" /><span>더보기</span></a><span class="arrowR">▶</span></span>
 	</div>
 
- 	 			<div class="list_bg">
-		<div class="list_bg_in">
-		<div class="thumbList  small_thumb ">
-			<ul class="thumb movie">
-							<li>
-					<dl>
-											<dt><a href="/_c21_/movie_bbs_read?grpid=1Rrvk&amp;fldid=MY0K&amp;contentval=00004zzzzzzzzzzzzzzzzzzzzzzzzz" onclick="caller(this.href);return false;"><img src="http://i1.tvpot.daumcdn.net/svc/image/U03/tvpot_thumb/ku7s-AZuJgQ$/thumb.jpg"  width="80" height="60"  alt="" /><img src="http://i1.daumcdn.net/cafeimg/cf_img4/img/icon_play.gif" width="12" height="13" alt="동영상" class="icon_movie" /></a><br /></dt>
-										</dl>
-				</li>
-							<li>
-					<dl>
-											<dt><div class="blank_thumb">&nbsp;</div></dt>
-										</dl>
-				</li>
-							<li>
-					<dl>
-											<dt><div class="blank_thumb">&nbsp;</div></dt>
-										</dl>
-				</li>
-							<li>
-					<dl>
-											<dt><div class="blank_thumb">&nbsp;</div></dt>
-										</dl>
-				</li>
-							<li>
-					<dl>
-											<dt><div class="blank_thumb">&nbsp;</div></dt>
-										</dl>
-				</li>
-							<li>
-					<dl>
-											<dt><div class="blank_thumb">&nbsp;</div></dt>
-										</dl>
-				</li>
-							<li>
-					<dl>
-											<dt><div class="blank_thumb">&nbsp;</div></dt>
-										</dl>
-				</li>
-							<li>
-					<dl>
-											<dt><div class="blank_thumb">&nbsp;</div></dt>
-										</dl>
-				</li>
-						</ul>
-		</div><!-- end thumbList --><div class="cl">&nbsp;</div>
-		</div><!-- end list_bg_in -->
-		</div><!-- end list_bg -->
+
 		<div class="list_bgB"><div class="list_bgB_inL">&nbsp;</div><div class="list_bgB_inR">&nbsp;</div></div>
 
 		</div>		</div><!-- end outBoxL -->
