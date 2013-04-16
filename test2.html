@@ -27,7 +27,15 @@ document.domain = "daum.net";
 
 //]]>
 </script><script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/3/2009/activeX.js"></script>
-
+<script type="text/javascript">//<![CDATA[
+CAFEAPP.ui = {
+	SCROLL_TO_MEMO : false,
+	ISPREVIEW : false,
+	MEMO_ENTR_ISWRITEPERM : "",
+	SERVERNAME : "cafe468.daum.net"	
+};
+//]]>
+</script>
 <script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/54/2009/home.js"></script>
 <script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/68/2009/entrance_viewer.js"></script>
 </head>
@@ -35,92 +43,7 @@ document.domain = "daum.net";
 <div id="wrap">
 
 <div id="upper">
-	<script type="text/javascript" language="javascript">
-function url_write(str,idx){
-	var locationStr = document.location.toString();
 
-	try{
-		var temp = locationStr.split("?","2");
-		var spObj = temp[1];
-		var spObj2 = spObj.split("&");
-		var len = spObj2.length;
-
-		for(var i=0; i<len; i++){
-			var searchParam = spObj2[i].indexOf(str);
-			if(searchParam == "0"){
-				searchParam = i;
-				var spVal = spObj2[i];
-				var wVal = spVal.substring(idx,spVal.length);
-				break;
-			}
-		}
-		return wVal;
-	}catch(e){}
-}
-//프레임 싸주기
-
-// 검색 관련 프레임 씌우기 시작.
-// 검색에서 온 정보성 게시글에서 다른 링크로 이동시 펌 링크 주소 없애고 카페주소 보이기 위해 다시 씌움(카페온 실행 용도도 있음)
-var isSearchProcess = false;
-try {	
-	
-	if (document.location.href.indexOf("cafesearch") != -1) {
-		//for quizevent
-		var quizEvent = url_write("quizevent=","10");
-		if(quizEvent == 1 && "down" != window.name){
-			var today = new Date();
-			var expires = new Date(today.getTime() + (30*1000));
-			document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe468.daum.net; path=/; expires=" + expires.toGMTString();
-			top.location.href = "http://cafe.daum.net/5dragon1004";
-		}
-	}
-	else if (top.isSearch && location.href.indexOf("bbs_search_read") == -1) { //검색용 cindex가 쌓여있다면...또한 검색 페이지가 아니면..		
-		var today = new Date();
-		var expires = new Date(today.getTime() + (30*1000));
-		document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe468.daum.net; path=/; expires=" + expires.toGMTString();		
-		top.location.href = "http://cafe.daum.net/5dragon1004";
-		isSearchProcess = true;
-	}
-	
-	//스팸툴에서 열렸을 경우 프레임을 씌우지 않는다! (2010-07-21 by 전성호)
-	try {
-		if (opener.location.href.indexOf("kiss.daum.net") != -1) {
-			isSearchProcess = true;
-		}
-	} catch (err2) {}
-	
-} catch (err) {
-
-}
-
-// 검색 관련 프레임 씌우기 끝.
-if (isSearchProcess) {
-} else if (document.referrer.indexOf("www.daum.net") != -1 || document.referrer.indexOf("cafe.daum.net") != -1) {
-	if ( !top.down ) {
-		if (location.href.indexOf("_top__ranking") == -1 && location.href.indexOf("_top_wow") == -1 && location.href.indexOf("bbs_search_read") == -1) {
-			
-			if (location.href.indexOf("_c21_/join_register") != -1 || location.href.indexOf("_c21_/chat_home") != -1 || location.href.indexOf("_c21_/bbs_list") != -1 ) {
-				var today = new Date();
-				var expires = new Date(today.getTime() + (30*1000));
-				document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe468.daum.net; path=/; expires=" + expires.toGMTString();
-				top.location.href = "http://cafe.daum.net/5dragon1004";
-			}
-		}
-	}
-} else if (location.href.indexOf("bbs_search_read") != -1) {
-	// 즐겨 찾기를 위해
-} else if (document.location.href.indexOf("cafesearch") != -1) {
-	//카페 검색을 위해(꼬릿말 팝업)
-} else {
-	if ( "down" != window.name ) {
-		var today = new Date();
-		var expires = new Date(today.getTime() + (30*1000));
-		document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe468.daum.net; path=/; expires=" + expires.toGMTString();
-		top.location.href = "http://cafe.daum.net/5dragon1004";
-	}
-}
-
-</script> 
 </div><!-- end upper -->
 <div id="cafe_gnb">
     	<div id="notiList" class="simple_notice" style="display:none">
