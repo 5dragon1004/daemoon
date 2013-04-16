@@ -22,26 +22,17 @@ var num = opener.photo_entrance_num;
 var curNum = num+1;
 var oldWidth = "";
 var oldHeight = "";
-onX();
-function onX()
-{
-alert("ssssssssssssssssssss");
-}
+
 function onLoad()
 {
-alert("ssssssssssssssssssss");
+
   var image = document.getElementById('photoview');
 	var iWidth = image.width + 52;
-	alert(iWidth);
 	var iHeight = image.height + 141 +10;
-	alert(iHeight);
 	var left = Math.ceil( (window.screen.width  - iWidth) / 2 );
-	alert(left);
     var top = 0;
     var btnPrev = document.getElementById("btnPrev");   
- 	alert(btnPrev);   
     var btnNext = document.getElementById("btnNext");
-  	alert(btnNext);      
 	if(image.width < 100) iWidth = 300;
 	if(image.height < 100) iHeight = 300;	
 	window.resizeTo(iWidth, iHeight);
@@ -139,7 +130,7 @@ body {padding:0;margin:10px 10px 0 10px ;}
 </head>
 
 <body>
-123
+1234
 <div id="popWrap">
 	<div id="control">
 	   	<div class="ctr_area">
