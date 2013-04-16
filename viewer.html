@@ -22,7 +22,11 @@ var num = opener.photo_entrance_num;
 var curNum = num+1;
 var oldWidth = "";
 var oldHeight = "";
-onLoad();
+onX();
+function onX()
+{
+alert("ssssssssssssssssssss");
+}
 function onLoad()
 {
 alert("ssssssssssssssssssss");
@@ -135,7 +139,7 @@ body {padding:0;margin:10px 10px 0 10px ;}
 </head>
 
 <body>
-1
+12
 <div id="popWrap">
 	<div id="control">
 	   	<div class="ctr_area">
@@ -155,6 +159,18 @@ body {padding:0;margin:10px 10px 0 10px ;}
 	document.getElementById("all").innerHTML = length;
 //]]>
 </script>
-
+<script charset='UTF-8' type='text/javascript' src='http://d1.daumcdn.net/tiara/tracker/tiara.min.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+    var __pageTracker = {};
+    if (typeof __Tiara != 'undefined' && typeof __Tiara.__getTracker != 'undefined') { 
+        __pageTracker = __Tiara.__getTracker();     
+    } else {         
+        __pageTracker.__trackPageview = function() {};     
+        __pageTracker.__addParam = function() {};
+    }
+    window.setTimeout('try { __pageTracker.__trackPageview(); } catch(e) {}', 1); 
+//]]>
+</script>
 </body>
 </html>
