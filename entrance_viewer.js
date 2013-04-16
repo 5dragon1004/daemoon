@@ -74,7 +74,7 @@ function openPhotoEntranceImagePopup(imageArr, index)
 	photo_entrance_num   = index;
 	alert(imageArr);
 	alert(index);
-	var imgPopup = window.open("http://cafe468.daum.net/_c21_/static/photo/viewer.html","photo_entrace_viewer","width=300px, height=300px, toolbar=no, location=no, directories=no, scrollbars=yes, menubar=no, status=no, resizable=yes");
+	var imgPopup = window.open("http://cafe469.daum.net/_c21_/static/photo/viewer.html","photo_entrace_viewer","width=300px, height=300px, toolbar=no, location=no, directories=no, scrollbars=yes, menubar=no, status=no, resizable=yes");
 }
 
 function getPhotoEntranceBrowserIsIE()
