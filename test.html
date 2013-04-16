@@ -1251,18 +1251,27 @@
 		AlphaBackgroundHeightSet();		
 	</script>
 		<script charset='UTF-8' type='text/javascript' src='http://d1.daumcdn.net/tiara/tracker/tiara.min.js'></script>
-	<script type='text/javascript'>
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+
+<!-- ////////////////////////////////////////////////////////////////////////////-->
+	<script type="text/javascript">
 	//<![CDATA[
-	    var __pageTracker = {};
-	    if (typeof __Tiara != 'undefined' && typeof __Tiara.__getTracker != 'undefined') { 
-	        __pageTracker = __Tiara.__getTracker();     
-	    } else {         
-	        __pageTracker.__trackPageview = function() {};     
-	        __pageTracker.__addParam = function() {};
-	    }
-	    window.setTimeout('try { __pageTracker.__trackPageview(); } catch(e) {}', 1); 
+	document.write('<iframe src="about:blank" width="0" height="0" frameborder="0" scrolling="no" name="ifr_korClick" id="ifr_korClick"></iframe>');
+	
+	function cafeDecoActionPV(item) {
+		var service = "cafe";
+		var ref = encodeURIComponent(document.referrer);
+		var loc = encodeURIComponent(document.location);
+		var tit = encodeURIComponent(document.title);
+		//var domain = document.location.href.match(/cafe[0-9]{2,3}/g) + ".daum.net";
+		var domain = "cafe469.daum.net";
+		
+		ifr_korClick.location.href='http://'+ domain +'/cafeservice_pv.html?service='+service+'&ref='+ref+'&loc='+loc+'&tit='+tit+'&v='+new Date().getTime();
+		
+		daum.sp.debug('cafe korean click => ', item);
+	}
 	//]]>
 	</script>
-
 </body>
 </html>
