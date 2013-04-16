@@ -102,24 +102,6 @@ function btnNextClick()
 </script>
 <meta http-equiv="imagetoolbar" content="no" />
 <script type="text/javascript" language="javascript">
-document.oncontextmenu = function() {
-	alert('무단복사를 막기 위해\n마우스 드래그 금지가 설정되어 있습니다' );
-	return false;
-}
-
-if(document.layers) {
-	window.captureEvents(Event.MOUSEDOWN);
-	window.onmousedown = function(e) {
-		if(e.target==document) {
-			alert('무단복사를 막기 위해\n마우스 드래그 금지가 설정되어 있습니다' );
-		}
-		return false; 
-	}
-} else {
-	document.onmousedown = function(){
-		return false;
-	}
-} 
 
 document.onkeydown  = function (evt) {
 	evt = (evt) ? evt : ((window.event) ? event : null);
