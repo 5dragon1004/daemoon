@@ -64,6 +64,22 @@ try{
 </div>
 
 	<!-- 카페 대문 끝 -->
+<script type="text/javascript">
+//<![CDATA[
+document.write('<iframe src="about:blank" width="0" height="0" frameborder="0" scrolling="no" name="ifr_korClick" id="ifr_korClick"></iframe>');
+ifr_korClick.location.href='http://cafe.daum.net/_pageview/home.html?'+new Date().getTime();
+
+function cafeActionPV(target) {
+	var service = "cafe";
+	var ref = encodeURIComponent(document.referrer);
+	var loc = encodeURIComponent(document.location);
+	var tit = encodeURIComponent(document.title);
+	var domain = "cafe468.daum.net";
+	
+	ifr_korClick.location.href='http://'+ domain +'/cafeservice_pv.html?service='+service+'&ref='+ref+'&loc='+loc+'&tit='+tit+'&v='+new Date().getTime();
+}
+//]]>
+</script>
 
 
 </body>
