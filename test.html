@@ -8,12 +8,23 @@
 <script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/68/2009/entrance_viewer.js"></script>
 <script type="text/javascript">//<![CDATA[
 document.domain = "daum.net";
+function showSideView(curObj, userid, planetUserid, targetNick, isAdmin, isGuest) {
+			var isMine = ("BQa2uyvYYuY0" == userid) ? true : false;
+		var sideView = new SideView('nameContextMenu', curObj, userid, planetUserid, '\uC774\uC2B9\uD658[\uC544\uC624\uC2A4\uB529]', targetNick, '\uCC9C\uC8FC\uAD50 \uCC9C\uC548\uC624\uB8E1\uB3D9\uC131\uB2F9', '', '40', isAdmin, isGuest, isMine);
+		sideView.showLayer();
+	}
+
+function showGroupSideView(curObj, mgrpid, userid, planetUserid, targetNick) {
+			var sideView = new SideView('nameContextMenu', curObj, userid, planetUserid, '\uC774\uC2B9\uD658[\uC544\uC624\uC2A4\uB529]', targetNick, '1RYXT', mgrpid, '\uCC9C\uC8FC\uAD50 \uCC9C\uC548\uC624\uB8E1\uB3D9\uC131\uB2F9', '', '40');
+		sideView.showLayer();
+	}
+
 //]]>
 </script>
 
 </head>
 <body>
-12345
+123456
 
 <script type="text/javascript">//<![CDATA[
 	function getCafeHostForFlash() {
@@ -64,22 +75,7 @@ try{
 </div>
 
 	<!-- 카페 대문 끝 -->
-<script type="text/javascript">
-//<![CDATA[
-document.write('<iframe src="about:blank" width="0" height="0" frameborder="0" scrolling="no" name="ifr_korClick" id="ifr_korClick"></iframe>');
-ifr_korClick.location.href='http://cafe.daum.net/_pageview/home.html?'+new Date().getTime();
 
-function cafeActionPV(target) {
-	var service = "cafe";
-	var ref = encodeURIComponent(document.referrer);
-	var loc = encodeURIComponent(document.location);
-	var tit = encodeURIComponent(document.title);
-	var domain = "cafe468.daum.net";
-	
-	ifr_korClick.location.href='http://'+ domain +'/cafeservice_pv.html?service='+service+'&ref='+ref+'&loc='+loc+'&tit='+tit+'&v='+new Date().getTime();
-}
-//]]>
-</script>
 
 
 </body>
