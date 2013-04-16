@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr" />
+<meta name="description" content="모든 이야기의 시작, Daum 카페" />
+<meta name="keywords" content="카페,클럽,커뮤니티,게시판,동호회,채팅,앨범,사진,이미지,동영상,카페파이,메모장,투표,자료실,히트,소모임,쪽지,대화,랭킹,휴대폰카페,문자통,무선메일,만남,정보,사람,다음,친구,추억,기억,동창,나눔,교환,공유,스토리,이야기,컴퓨터,인터넷,팬카페,친목,여성,게임,스포츠,레저,음악,과학,인문,정치,사회,지역,고향,만화,애니메이션,생활,건강,영화,종교,취미,동문회,방송,연예,육군,cafe,club,chat,cahtting,bbs,Daum,community,story,people,information,UCC" />
+<title>Daum 카페 대문 꾸미기</title>
+<script type="text/javascript">
+//<![CDATA[
+document.domain ="daum.net";
+
+var imageArr = opener.photo_entrance_array;
+var length = opener.photo_entrance_array.length;
+var num = opener.photo_entrance_num;
+var curNum = num+1;
+var oldWidth = "";
+var oldHeight = "";
+
+function onLoad()
+{
+  var image = document.getElementById('photoview');
+	var iWidth = image.width + 52;
+	var iHeight = image.height + 141 +10;
+	var left = Math.ceil( (window.screen.width  - iWidth) / 2 );
+    var top = 0;
+    var btnPrev = document.getElementById("btnPrev");   
+    var btnNext = document.getElementById("btnNext");
+	if(image.width < 100) iWidth = 300;
+	if(image.height < 100) iHeight = 300;	
+	window.resizeTo(iWidth, iHeight);
+	window.moveTo(left, top);
+	
+	if(num==0){
+	    btnPrev.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_ln_off.gif";
+	    btnPrev.style.cursor="default";    
+	}
+	if(num==length-1){
+	    btnNext.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_rn_off.gif";
+	    btnNext.style.cursor="default";     
+	}
+}
+
+function btnPrevClick()
+{
+	var btnPrev = document.getElementById("btnPrev");	
+	var btnNext = document.getElementById("btnNext");
+    var preview = document.getElementById("photoview");
+    if(num > 0) {
+       btnPrev.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_ln_on.gif";
+       btnPrev.style.cursor="pointer";
+       num--;
+       document.getElementById("cur").innerHTML = num+1;
+       preview.src = imageArr[num]['image'];
+       if(num==0){
+         btnPrev.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_ln_off.gif";
+         btnPrev.style.cursor="default";    
+       }
+    }else{
+       btnPrev.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_ln_off.gif";
+       btnPrev.style.cursor="default";           
+    }
+    if(num < length-1) {
+       btnNext.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_rn_on.gif";
+       btnNext.style.cursor="pointer";
+    }
+}
+
+function btnNextClick()
+{   
+    var btnPrev = document.getElementById("btnPrev");
+    var btnNext = document.getElementById("btnNext");    
+    var preview = document.getElementById("photoview");
+	if(num < length-1) {
+	   btnNext.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_rn_on.gif";
+	   btnNext.style.cursor="pointer";
+	   num++;
+	   document.getElementById("cur").innerHTML = num+1;
+	   preview.src = imageArr[num]['image'];
+	   if(num==length-1){
+	       btnNext.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_rn_off.gif";
+           btnNext.style.cursor="default";     
+	   }
+	}else{
+	   btnNext.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_rn_off.gif";
+       btnNext.style.cursor="default";	   
+	}
+	if(num > 0) {
+       btnPrev.src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_ln_on.gif";
+       btnPrev.style.cursor="pointer";
+    }
+}
+
+//]]>
+</script>
+<meta http-equiv="imagetoolbar" content="no" />
+<script type="text/javascript" language="javascript">
+document.oncontextmenu = function() {
+	alert('무단복사를 막기 위해\n마우스 드래그 금지가 설정되어 있습니다' );
+	return false;
+}
+
+if(document.layers) {
+	window.captureEvents(Event.MOUSEDOWN);
+	window.onmousedown = function(e) {
+		if(e.target==document) {
+			alert('무단복사를 막기 위해\n마우스 드래그 금지가 설정되어 있습니다' );
+		}
+		return false; 
+	}
+} else {
+	document.onmousedown = function(){
+		return false;
+	}
+} 
+
+document.onkeydown  = function (evt) {
+	evt = (evt) ? evt : ((window.event) ? event : null);
+
+	if(evt) {
+		if(evt.ctrlKey && (evt.keyCode == 65 || evt.keyCode == 97 || evt.keyCode == 67 || evt.keyCode == 99)) {
+			evt.keyCode = 0;
+			evt.cancelBubble = true;
+			evt.returnValue = false;
+		}
+	}
+}
+
+document.ondragstart = function(){return false;}
+document.onselectstart = function(){return false;}
+</script>
+<style type="text/css">
+body {padding:0;margin:10px 10px 0 10px ;}
+#control { text-align:center; font-size:12px; font-family:"돋움",dotum; color:#999; height:42px; }
+#control .ctr_area { width:160px; text-align:center; margin:0 auto; }
+#control .cnt { position:absolute; top:15px; right:13px;}
+#control .cnt strong {color:#6173E8;}
+#control img {cursor:pointer;}
+#photoviewer {text-align:center; margin:0 auto;}
+</style>
+</head>
+
+<body>
+
+<div id="popWrap">
+	<div id="control">
+	   	<div class="ctr_area">
+			<img id="btnPrev" src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_ln_on.gif" alt="이전 사진 보기" onclick="btnPrevClick();" /><img id="btnNext" src="http://i1.daumcdn.net/cafeimg/cf_img4/intro/btn_rn_on.gif" alt="다음 사진 보기" onclick="btnNextClick();" style="margin-left:4px;" />
+	   	</div>
+		<span class="cnt"><strong id="cur">0</strong> / <span id="all">0</span></span>
+	</div>
+	<div id="photoviewer" class="photo_view" style="display: block;">
+		<img id="photoview" src="" alt="original image" align="middle" onload="onLoad();" onclick="self.close();"/>
+	</div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+	document.getElementById("photoview").src = imageArr[num]['image'];
+	document.getElementById("cur").innerHTML = curNum;
+	document.getElementById("all").innerHTML = length;
+//]]>
+</script>
+<script charset='UTF-8' type='text/javascript' src='http://d1.daumcdn.net/tiara/tracker/tiara.min.js'></script>
+<script type='text/javascript'>
+//<![CDATA[
+    var __pageTracker = {};
+    if (typeof __Tiara != 'undefined' && typeof __Tiara.__getTracker != 'undefined') { 
+        __pageTracker = __Tiara.__getTracker();     
+    } else {         
+        __pageTracker.__trackPageview = function() {};     
+        __pageTracker.__addParam = function() {};
+    }
+    window.setTimeout('try { __pageTracker.__trackPageview(); } catch(e) {}', 1); 
+//]]>
+</script>
+</body>
+</html>
