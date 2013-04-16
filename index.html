@@ -75,54 +75,6 @@ try{
 </div>
 
 	<!-- 카페 대문 끝 -->
-
-	<script type="text/javascript">//<![CDATA[
-	    try {
-	        if (parent.proxy) {
-	            var homeobj = document.getElementById("homeurl");
-	            homeobj.href = parent.proxy+"/5DragonAdmin";
-	        }
-	    } catch (e) {
-	    }
-	    	    document.domain='daum.net';
-	    	    var titleStr = "\uC624\uB8E1\uB3D9\uC131\uB2F9\uAD00\uB9AC\uC6A9 - Daum 카페";
-	    try {
-	        if (top != null) {
-	            top.document.title = titleStr;
-	        } else {
-	            document.title = titleStr;
-	        }
-	    } catch(e) {}
-	    	    try {
-	        if (parent.proxy) {
-	            var topobj = document.getElementById("upper");
-	            topobj.style.display = 'none';
-	        }
-	    } catch (e) {
-	    }
-	    try {
-		    //뚜껑 카페
-		    if (parent.proxy) {
-		        var leftobj = document.getElementById("leftmenu");
-		        if(parent.lmargin!=null)
-		            leftobj.style.left = parent.lmargin;
-		        else
-		            leftobj.style.left = 25;
-		    
-		        if(parent.lmargin!=null)
-		            document.body.leftMargin = parent.lmargin;
-		        else
-		            document.body.leftMargin = 25;
-		        if(parent.rmargin!=null)
-		            document.body.rightMargin = parent.rmargin;
-		        else
-		            document.body.rightMargin = 9;
-		    }
-	    } catch (e) {
-	    }
-	// ]]>
-	</script>
-
  
 </body>
 </html>
