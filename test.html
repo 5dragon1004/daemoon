@@ -1,836 +1,1145 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
-<head>
-    <title></title>
+<html xmlns="http://www.w3.org/1999/xhtml">
+head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr" />
+<meta name="description" content="모든 이야기의 시작, Daum 카페" />
+<meta name="keywords" content="카페,클럽,커뮤니티,게시판,동호회,채팅,앨범,사진,이미지,동영상,카페파이,메모장,투표,자료실,히트,소모임,쪽지,대화,랭킹,휴대폰카페,문자통,무선메일,만남,정보,사람,다음,친구,추억,기억,동창,나눔,교환,공유,스토리,이야기,컴퓨터,인터넷,팬카페,친목,여성,게임,스포츠,레저,음악,과학,인문,정치,사회,지역,고향,만화,애니메이션,생활,건강,영화,종교,취미,동문회,방송,연예,육군,cafe,club,chat,cahtting,bbs,Daum,community,story,people,information,UCC" />
+<title>오룡동성당관리용 - Daum 카페</title>
+<style type="text/css">
+#intro, #intro2, .intro_con, .intro_con2 {overflow: hidden;}
+.type2_1.fixed2_1 #wrap {width: 971px; margin: 0 auto; overflow: hidden;}
+.type2_1.flexibled2_1 #wrap {width: 100%;}
+.type2_1 #intro {display: none;}
+.type2_1 #intro .intro_con  {display: none;}
+.type2_1 #intro2    {display: block; overflow: hidden; width:"\"}\"";}
+* html .type2_1 #intro2 .intro_con2 {width:"\"}\""; width: 100%;  overflow: hidden;}
+.type2_1 #intro2 .intro_con2    {display: block;}
+.type2_1 #cafemenu  {float: left;}
+.type2_1 #content   {margin-left: 197px;}
+* html .type2_1 #content    {float: left; margin-left: 12px;}
+.type2_1 #primaryContent    {float: left; width: 774px;}
+.type2_1 #sidebar2  {display: block;}
 
-    <script type="text/javascript">
-    //<![CDATA[
-	var daumProperties = {
-	    name: "cube",
-	    BASEURL: "http://s1.daumcdn.net/cafecj/js/",
-	    IMAGEURL: "http://s1.daumcdn.net/cafecj/images/",
-	    	    TEMPLATE_URL: "/_c21_/static/js/cube/template/",
-	    USING_LOGGER: true,
-	    LOGGER_LEVEL: "INFO",
-	    SET_DOMAIN: "daum.net",
-	    LIBRARY: [ ],
-	            DUMMY_PARAM: "20130312_3"
-	};
-    //]]>
-    </script>
-    <script type='text/javascript' src='http://s1.daumcdn.net/cafecj/js/51/cube/msgResources.js'></script>
-	<script type='text/javascript' src='http://s1.daumcdn.net/cafecj/js/183/cube/cube-all.js'></script>
-	<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/6/2009/dwr/dwrstub-cube-compressed.js"></script>
-	<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/8/2009/dwr/dwrstub-founder-compressed.js"></script>
-    <script type='text/javascript' src='http://s1.daumcdn.net/cafecj/js/122/cube/template/jst-all.js'></script>
-
-
-	    <script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/2/2009/dhtmlxslider-compressed.js"></script>
-    <script type="text/javascript">//<![CDATA[
-    	
-    	ENV_VAR["_affogato_ver"] = '20091228';
-    	
-    	
-		daum.sp.include("cube.widget.MessageBox");
-		daum.sp.include("cube.widget.LoadingManager");
-		daum.sp.include("cube.utility.DWRUtil");
-		daum.sp.include("cube.utility.Utils");
-		daum.sp.include("cube.model.ComponentContext");
-		daum.sp.include("cube.widget.LayerManager");
-		daum.sp.include("cube.view.ViewInstanceManager");
-		daum.sp.include("cube.widget.CheckBox");
-		daum.sp.include("cube.view.entrance.EntranceTextEditorView");
-		daum.sp.include("cube.widget.Blinder");
-		daum.sp.include("cube.controller.entrance.EntranceSaveController");
-		daum.sp.include("cube.dao.EntranceDAO");
-		daum.sp.include("cube.widget.TipLayer");
-
-
-		var entranceAction= cube.controller.entrance.EntranceSaveController;
-		var entranceEditorVisible= cube.controller.entrance.EntranceSaveController.entranceEditorVisible;
-		
-		function commonOnLoad(){
-					cube.widget.LoadingManager.hideLoading();
-			tabMenuManager.init();
-				entranceSeletorView.checkCookie();
-		entranceEditorVisible.init();
-        		}
-
-		function AlphaBackgroundHeightSet(){
-		    setTimeout(function(){
-		        try {
-		            var dimesion = getCoords($("entranceTableArea")) //.getDimensions(); // depends on prototypejs
-		            $("entrance_alpha_bg").style.width = dimesion.width + "px"; 
-		            $("entrance_alpha_bg").style.height = dimesion.height + "px";
-		        }  catch (e) { }
-		    }, 1000);
-		}
-
-		var tabMenuManager= {
-			selectedId: null,
-			setSelectedId: function (id){
-				if($(id)){
-					if(this.selectedId!=null) $(this.selectedId).className= $(this.selectedId).className.replace("_on","");
-					if($(id).className.indexOf("_on")==-1) $(id).className= $(id).className + "_on";
-					this.selectedId= id;	
-				}
-			
-			},
-			init: function (){
-				var eleList= $("entranceTabMenu").getElementsByTagName("A");
-				if(eleList.length<=1) return;
-			    for (var i=0; i<eleList.length; i++){
-			        if(eleList[i].id.length>1 && eleList[i].className.indexOf("opacity")==-1){
-				        daum.Event.addEvent(eleList[i].id, "mouseover",
-				        	function (){
-				        		if(this.className.indexOf("_on")==-1) this.className= this.className + "_on";
-				        	}
-						);
-				        daum.Event.addEvent(eleList[i].id, "mouseout",
-				        	function (){
-				        		if(tabMenuManager.selectedId!=this.id) this.className= this.className.replace("_on","");
-				        	}
-						);					
-			        }
-				}
-				if (cube.widget.LayerManager) cube.widget.LayerManager.registLayer("entranceFirstMenuTree", "entranceTabMenu", function (){ $("entranceFirstMenuTree").style.display="none"; });			
-			},
-			mouseOver : function (ele, flag){
-				var menuEle= $("entranceFirstMenuTree");
-				var defaultClass= menuEle.className;
-				var overClass= "HTMLENTRANCE";
-				
-				if(ele.className.indexOf("webzine")!=-1){
-					overClass= "WEBZINEENTRANCE";
-				}else if(ele.className.indexOf("photo")!=-1){
-					overClass= "PHOTOENTRANCE";
-				}else if(ele.className.indexOf("memo")!=-1){
-					overClass= "MEMOENTRANCE";
-				}else if(ele.className.indexOf("movie")!=-1){
-					overClass= "MOVIEENTRANCE";
-				}
-					
-				if(flag){
-					menuEle.className= " efm_" + overClass;
-				}else{
-					menuEle.className= "";
-				}
-			},
-			goFirstTabPage: function (category){
-				var locate= "founder_entrance_html_management";
-				var param= "&mode=create";
-				switch(category){
-					case "webzine":
-						locate= "founder_entrance_webzine_management";
-						param= "&mode=create&type=default";
-						break;
-					case "photo":
-						locate= "founder_entrance_photo_management";
-						param= "&mode=create&templatetype=pie";
-						break;
-					case "memo":
-						locate= "founder_entrance_memo_management";
-						param= "&mode=create&type=post";
-						break;
-					case "movie":
-						locate= "founder_entrance_movie_management";
-						break;
-				}
-				location.href= "/_c21_/" + locate + "?grpid=" + ENV_VAR.grpid + param;
-			},
-			changeFirstTab:  function (category){
-				this.goFirstTabPage(category);
-			},
-			clickFirstTabIcon: function (btn_ele){
-				var layerMenu= $("entranceFirstMenuTree");
-				if(layerMenu.style.display=="block"){
-					layerMenu.style.display= "none";
-					btn_ele.className= "eefm_icon_name eefm_imglink";
-
-				}else{
-					layerMenu.style.display= "block";
-					btn_ele.className= "eefm_icon_name_on eefm_imglink";
-				}
-			
-			}
-			
-		}
-			
-	    if(typeof(CAFEAPP) == "undefined"){ window.CAFEAPP = new Object(); }
-	    window.CAFEAPP.GRPID = ENV_VAR.grpid;
-
-		window.FLASH_VAR = {
-		    swfurl: 'http://cafeimg.daum-img.net/cf_img4/affogato/',
-		    params : {
-		        allowscriptaccess: 'always',
-		        quality: 'high',
-		        loop: 'false', 
-		        menu: 'false',
-		        wmode: 'transparent',
-		        swliveconnect: 'true',
-		        base: 'http://cafeimg.daum-img.net/cf_img4/affogato/'
-		    }
-		}
-	 
-		var entranceSeletorView= {
-			cookieName: "CUBE_ETR_FLAG",
-			blinder: null,
-			show: function (){
-				this.blinder= new cube.widget.Blinder({minHeight:850});
-				this.blinder.on();	
-				var ele= $("entranceSelectorArea");
-				if(ele){
-					ele.style.display= "block";
-				}
-			},
-			hidden: function (){
-				this.blinder.off();
-				$("entranceSelectorArea").style.display= "none";
-				this.setCookie();
-			},
-			setCookie: function (){
-				var flag= this.getCookie(this.cookieName);
-				if(!flag){
-					daum.Browser.setCookie(this.cookieName, "true", 60 );
-				}
-			},
-			getCookie: function (){
-				return daum.Browser.getCookie(this.cookieName);
-			},
-			checkCookie: function (){
-				//if(!this.getCookie()){
-				//	this.show();
-				//}
-			}
-		}
-		
-		var entranceEditerTypeSelecter = { 
-			templet: null,
-			nowType: null,
-			nowCategory: "",
-			layoutType: "2",
-			entranceSelectorBlinder: new cube.widget.Blinder(),
-			select: function(type, title){
-				var url= "";
-				var img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set01_s.gif";
-				switch(type){
-					case "html":
-						url = "founder_entrance_html_management";
-						this.nowCategory= "";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set14_l.jpg";
-						break;				
-					case "webzine":
-						url = "founder_entrance_webzine_management";
-						this.nowCategory= "&type=default";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set01_l.gif";
-						break;
-					case "magazine":
-						if(this.layoutType=="3" || this.layoutType=="2"){
-							//cube.widget.MessageBox.alert(" 매거진은 1단 레이아웃 대문 입니다.<br/> 단형 설정은 홈꾸미기 &gt; 레이아웃에서 할 수 있습니다.");	
-							return;
-						}					
-						url = "founder_entrance_webzine_management";
-						this.nowCategory= "&type=magazine";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set02_l.gif";
-						break;
-					case "prologue":
-						if(this.layoutType=="3"){
-							//cube.widget.MessageBox.alert("프롤로그는 1, 2단 레이아웃 대문 입니다.<br/> 단형 설정은 홈꾸미기 &gt; 레이아웃에서 할 수 있습니다.");	
-							return;
-						}				
-						url = "founder_entrance_webzine_management";
-						this.nowCategory= "&type=prologue";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set03_l.gif";
-						break;
-					case "hot-issue":
-						url = "founder_entrance_webzine_management";
-						this.nowCategory= "&type=hotissue";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set04_l.gif";
-						break;
-					case "pie":
-						url = "founder_entrance_photo_management";
-						this.nowCategory= "&templatetype=pie";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set06_l.gif";
-						break;
-					case "frame":
-						url = "founder_entrance_photo_management";
-						this.nowCategory= "&templatetype=frame";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set05_l.jpg";
-						break;
-					case "slide":
-						url = "founder_entrance_photo_management";
-						this.nowCategory= "&templatetype=slide";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set07_l.jpg";
-						break;					
-					case "showcase":
-						url = "founder_entrance_photo_management";
-						this.nowCategory= "&templatetype=slide_3d";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set08_l.jpg";
-						break;					
-					case "random":
-						url = "founder_entrance_photo_management";
-						this.nowCategory= "&templatetype=random";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set09_l.jpg";
-						break;					
-					case "wide":
-						url = "founder_entrance_photo_management";
-						this.nowCategory= "&templatetype=wide";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set10_l.jpg";
-						break;					
-					case "list":
-						url = "founder_entrance_memo_management";
-						this.nowCategory= "&type=list";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set11_l.gif";
-						break;					
-					case "post":
-						url = "founder_entrance_memo_management";
-						this.nowCategory= "&type=post";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set12_l.gif";
-						break;					
-					case "movie":
-						url = "founder_entrance_movie_management";
-						img= "http://i1.daumcdn.net/cafeimg/cf_img4/thumb/intro_set/set13_l.gif";
-						break;					
-					default:
-						// location.href= "/_c21_/" + url + "?grpid=1Rrvk";
-				}
-				var $largeThumbEl = this.$largeThumbEl = $E("entranceSelectorLageThumb");
-				if(this.templet==null){
-					this.templet= $largeThumbEl.innerHTML;
-				}
-				this.nowType= url;
-				$largeThumbEl.innerHTML= this.templet.replace("<!--$TITLE-->", title).replace("<!--$IMG-->", '<img src="' + img + '" onclick="entranceEditerTypeSelecter.goEditer();" class="esi_sel_thumb" />' );
-				this.entranceSelectorBlinder.on({ container: "entranceSelector", opacity: 0.25 });
-				$largeThumbEl.setStyle("zIndex", 30002);
-				$largeThumbEl.show();
-				$largeThumbEl.setStyle("filter", "progid:DXImageTransform.Microsoft.Shadow(color=#333333,direction=135,strength=2)");
-			    cube.widget.Centerize.onWindow($largeThumbEl, { maxTop: 300 });
-			},
-			goEditer : function(){
-				entranceSeletorView.setCookie();
-				//var nexUrl= "/_c21_/" + this.nowType + "?grpid=1Rrvk";
-				location.href= "/_c21_/" + entranceEditerTypeSelecter.nowType + "?grpid=1Rrvk&mode=create" + entranceEditerTypeSelecter.nowCategory;
-			},
-			goCancel : function(){
-			    this.$largeThumbEl.hide();
-				this.entranceSelectorBlinder.off();
-			}
-		}
-	//]]>
-	</script>
-	
-
-			
-		
-	
-</head>
-<body>
-
-                <script type="text/javascript">
-        //<![CDATA[
-        function openCubeTip(position) {
-        	var url = "http://cafe.daum.net/_special/0908_cubehelp/";
-        	var menu = "";
-        	switch (position) {
-        		case "ENTRANCE" :
-        			var menu = "?entrance"
-        			break;
-        		case "TITLE" :
-        			var menu = "?title"
-        			break;
-        		case "REPOSITORY" :
-        			var menu = "?repository"
-        			break;
-        		case "RECOMMENDSET" :
-        			var menu = "?recommendset"
-        			break; 
-        	}
-        	url += menu;
-        	var cubeTip = window.open(url,'popTip','width=810,height=500,toolbar=no,status=no,resizable=yes,scrollbars=yes');
-	       	cubeTip.focus();
-        }
-        
-        function confirmChangeEntranceType(type, targetUrl){
-            daum.sp.include("cube.widget.MessageBox");
-            var msg = "현재 " + (type == "TEMPLATE" ? "템플릿" : "에디터") + " 대문을 이용 중입니다.<br />새로운 대문을 만들면 덮어 씌워 집니다.<br />계속 하시겠습니까?";
-            cube.widget.MessageBox.confirm(msg, function(){
-                document.location.href = targetUrl;
-            });
-        }
-                setInterval(function(){
-            var url = "https://logins.daum.net/accounts/auth.gif?dummy=" +  (new Date().getTime());
-            $("daumtrans").src = url;
-            daum.sp.debug("keep Daum login session. reload daumtrans", url);
-        }, 1000 * 60 * 10);
-                
-        (function(){
-	        var url = document.location.href;
-	        /*
-	        $("entranceMenuTab").onmouseover= function(e){
-	        	$("tooltipEntranceMenu").style.display= "block";
-	        }
-	        $("entranceMenuTab").onmouseout= function(e){
-	        	var target = window.event ? window.event.fromElement : e ? e.relatedTarget : null;
-	        	if(target.className.indexOf("fe_title")==-1){
-	        		$("tooltipEntranceMenu").style.display= "none";
-	        	}
-	        }*/
-	        var menuList = document.getElementById("founderMenu").getElementsByTagName("a");
-	        for(var i = 0, loop = menuList.length; i < loop; i++){
-	            var a = menuList[i];
-	            if(url.indexOf(a.className.split(" ")[1]) > 0 || url.indexOf(a.className.split(" ")[0]) > 0){
-                    a.className = a.className + "_on";
-                }
-	        }
-        })()
-        //]]>
-        </script>        
-            </div><!-- end founderHeader -->
-</div><!-- end founderHeaderWrap -->
-<div id="loadingBox" style="display:none;">
-	<div id="loadingPlayer"><div id="loadingFlash"></div></div>
-</div>
-<div id="loadingLayer" style="display:none;"></div>
-<!-- end LoadingLayer -->
-
-        <script type="text/javascript">//<![CDATA[
-		cube.widget.LoadingManager.showLoading();
-	//]]>
-	</script>
-	
-	
-<div id="entranceEditorWrap">
-    <div id="entranceEditor" class="PHOTOENTRANCE">
-		<div class="eehead_bg"></div>
-        <div class="entranceEditorHeader eew_type_PHOTOENTRANCE">
-            <div id="entranceTabMenu" class="entranceEditorMenu">
-
-            	<div id="entranceFirstMenu" class="eefm_icon efm_PHOTOENTRANCE">
-            		<a href="#" onclick="tabMenuManager.clickFirstTabIcon(this); return false;" class="eefm_icon_name eefm_imglink" >대문형태</a>
-            		<div id="entranceFirstMenuTree">
-            			<ul>
-            				<li class="efmt_html" onmouseover="tabMenuManager.mouseOver(this, true); return false;" onmouseout="tabMenuManager.mouseOver(this, false); return false;">
-            					<a href="#" onclick="tabMenuManager.changeFirstTab('html'); return false;">직접꾸미기</a>
-            				</li>
-            				<li class="efmt_webzine" onmouseover="tabMenuManager.mouseOver(this, true); return false;" onmouseout="tabMenuManager.mouseOver(this, false); return false;">
-            					<a href="#" onclick="tabMenuManager.changeFirstTab('webzine'); return false;">웹진형</a>
-            				</li>
-            				<li class="efmt_photo" onmouseover="tabMenuManager.mouseOver(this, true); return false;" onmouseout="tabMenuManager.mouseOver(this, false); return false;">
-            					<a href="#" onclick="tabMenuManager.changeFirstTab('photo'); return false;">사진형</a>
-            				</li>       					
-            				<li class="efmt_memo" onmouseover="tabMenuManager.mouseOver(this, true); return false;" onmouseout="tabMenuManager.mouseOver(this, false); return false;">
-            					<a href="#" onclick="tabMenuManager.changeFirstTab('memo'); return false;">메모형</a>
-            				</li>
-            				<li class="efmt_movie" onmouseover="tabMenuManager.mouseOver(this, true); return false;" onmouseout="tabMenuManager.mouseOver(this, false); return false;">
-            					<a href="#" onclick="tabMenuManager.changeFirstTab('movie'); return false;">동영상형</a>
-            				</li>
-            			</ul></div>
-            	</div>
-            	
-            	<div class="eefm_subtab">
-            		 <a class="divline">|</a>
-	            	                <a href="#" id="BtnEntranceTyepPie" onclick="EMC.mc.entranceTyepPie(this); return false;"  class="pie">파이</a>
-	                <a class="divline">|</a>
-	                <a href="#" id="BtnEntranceTyepStack" onclick="EMC.mc.entranceTyepStack(this); return false;" class="frame">프레임</a>
-	                <a class="divline">|</a>
-	                <a href="#" id="BtnEntranceTyepSlideCycle" onclick="EMC.mc.entranceTyepSlideCycle(this); return false;"  class="slide">슬라이드</a>
-	                <a class="divline">|</a>
-	                <a href="#" id="BtnEntranceTyepSlideCylinder" onclick="EMC.mc.entranceTyepSlideCylinder(this); return false;"  class="slide_3d">3D슬라이드</a>
-	                <a class="divline">|</a>
-	                <a href="#" id="BtnEntranceTyepSlideStack" onclick="EMC.mc.entranceTyepSlideStack(this); return false;"  class="random">랜덤 플레이</a>
-	                <a class="divline">|</a>
-	                <a href="#" id="BtnEntranceTyepSlideWide" onclick="EMC.mc.entranceTyepSlideWide(this); return false;"  class="wide">와이드 겔러리</a>            
-	                        	</div>
-            </div>
-            <div class="entranceEditorList">
-            		<button onclick="javascript:entranceSeletorView.show();return false;" title="새 대문 만들기">새 대문 만들기</button>
-            </div>
-        </div>
-        <div id="entranceEditorContent" class="PHOTOENTRANCE">
-			<div id="photoEditerArea">
-				<div id="mochaeditor_flash_content">
-																								</div>
-				<div id="affogato_flash_content">
-									</div>
-			</div>
-        </div>
-        <div id="entranceEditorControl" class="PHOTOENTRANCE">
-            <div class="entranceEditorControlLeft">
-                <button onclick="javascript:entranceAction.preview('PHOTOENTRANCE'); return false;" class="btn_entrance_editer btnPreview">미리보기</button>
-            </div>
-            <div class="entranceEditorControlCenter">
-                <button id="BtnEntranceApply" onclick="javascript:entranceAction.submit('PHOTOENTRANCE'); return false;" class="btn_entrance_editer btnApply">적용</button>
-                <button id="BtnEntranceCancel" onclick="javascript:entranceAction.cancel('PHOTOENTRANCE'); return false;" class="btn_entrance_editer btnCancel">취소</button>
-                            </div>
-            <div  class="entranceEditorControlRight">
-        		<div id="disableEntranceBtn" class="eer_bg" onclick="entranceEditorVisible.check(); return false;">	            
-                	<input type="checkbox" id="disableEntrance" /><label class="labelDisableEntrance" for="disableEntrance">대문 사용 안함</label>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- end div#entranceEditor -->
-</div>
-        <div class="entranceEditorFooter">
-        	<div class="eefoot_bg">&nbsp;</div>
-        	<div class="entranceEditorFooterControll">
-		        		            <a href="#set_background" class="set_ctr set_background" onclick="javascript:Views._$('cube.view.entrance.EntranceBackgroundView').render();return false;">배경설정</a>
-		            <span class="divline"></span>
-		            <a href="#set_text" id="TextPupupBtn" class="set_ctr set_text" onclick="javascript:Views._$('cube.view.entrance.EntranceTextView').render();return false;">대문글 추가 </a>
-		
-		
-		            <div id="EntranceTyepStackOption">
-		                <div class="eto_item">
-		                    <strong class="set_ctr">
-								배열
-		                    </strong>
-		                    <div class="eto_item_array">
-		                        <select id="ArrayWidthCounter" onchange="EMC.dc.onChangeWidthCount()">
-		                            <option value="3">3</option>
-		                            <option value="4">4</option>
-		                            <option value="5" selected="true">5</option>
-		                            <option value="6">6</option>
-		                        </select>
-		                        <span class="eto_contx set_ctr">
-									X
-		                        </span>
-		                        <select id="ArrayHeightCounter" onchange="EMC.dc.onChangeHeightCount()">
-		                            <option value="1">1</option>
-		                            <option value="2" selected="true">2</option>
-		                            <option value="3">3</option>
-		                        </select>
-		                    </div>          
-		                </div> 
-		                <span class="divline"></span>
-		                <div class="eto_item">
-		                    <strong class="set_ctr">
-								 간격 
-		                    </strong>
-		                    <input type="text" value="15" id="ArraySpaceCounter" class="text_input" onchange="cube.controller.entrance.EntranceDetailController.onChangeSpaceCount()" />
-		                    <button type="button" onclick="EMC.option.spaceCounterSlider.goLeft();" class="eto_slider_btn eto_slider_left"><span>왼쪽</span></button>
-		                    <div id="ArraySpaceCounterSlider" class="eto_slider" ></div>
-							<button type="button" onclick="EMC.option.spaceCounterSlider.goRight();" class="eto_slider_btn eto_slider_right"><span>오른쪽</span></button>
-		                </div>
-		                <span class="divline"></span>
-		                
-		                <div class="eto_item" >
-		                    <strong class="set_ctr">
-								모서리
-		                    </strong>                    
-		                    <input type="text" value="20" id="ArrayCornerCounter" class="text_input" />
-		                    <button type="button" onclick="EMC.option.cornerCounterSlider.goLeft();" class="eto_slider_btn eto_slider_left"><span>왼쪽</span></button>
-		                    <div id="ArrayCornerCounterSlider" class="eto_slider" ></div>
-							<button type="button" onclick="EMC.option.cornerCounterSlider.goRight();" class="eto_slider_btn eto_slider_right"><span>오른쪽</span></button>
-		                </div>                  
-		                <span class="divline"></span>
-		                
-		                <div class="eto_item" >
-		                    <strong class="set_ctr">
-								기울기
-		                    </strong>
-		                    <input type="text" value="0" id="ArraySlopeCounter" class="text_input" />
-		                    <button type="button" onclick="EMC.option.slopeCounterSlider.goLeft();" class="eto_slider_btn eto_slider_left"><span>왼쪽</span></button>
-		                    <div id="ArraySlopeCounterSlider" class="eto_slider" ></div>
-		                    <button type="button" onclick="EMC.option.slopeCounterSlider.goRight();" class="eto_slider_btn eto_slider_right"><span>오른쪽</span></button>
-		                </div>                  
-		                <span class="divline"></span>
-		                
-		                
-		                <div class="eto_item eto_set_border_line set_ctr">
-		                    <input type="checkbox" id="OutlineFlag" checked="checked" onclick="EMC.dc.onClickOutlineFlag()" /> 테두리 사용
-		                </div>              
-		            </div>        
-		
-		        
-        	</div> 
-        </div>  
-
-<!-- end div#entranceEditorWrap -->
-<form name="previewForm" method="post" action="" target="" class="hidden_form">
-	<input name="previewEntranceVisible" type="hidden" value="true" />	
-    <input name="previewEntranceTemplate" type="hidden" value="" />
-    <input name="previewEntranceCSS" type="hidden" value="" />
-    <input name="previewEntranceType" type="hidden" value="" />
-    <input name="previewMemoId" type="hidden" value="" />
-    <input name="previewBackgroundType" type="hidden" value="" />
-</form>
-<form name="previewFormByEtc" method="post" action="" target="" class="hidden_form">
-    <input name="previewEntranceType" type="hidden" value="PHOTOENTRANCE" />
-    <input name="previewEntranceVisible" type="hidden" value="true" />
-    <input name="height" type="hidden" value="" />
-</form>
-
+</style><link rel="stylesheet" type="text/css" href="http://s1.daumcdn.net/cafecj/css/344/2009/default.css" />
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/55/2009/common-lib.js"></script>
+		<link rel="stylesheet" type="text/css" href="http://s1.daumcdn.net/cafecj/css/80/2009/top.css" />
+					<link rel="stylesheet" type="text/css" href="http://s1.cafe.daumcdn.net/cafe469/_c21_/css/1Rrvk/149/20130416130907.74/20130403133723.55/20130416130906.64.css?grpid=1Rrvk" />
+			<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/223/2009/common.js"></script>
 <script type="text/javascript">
 //<![CDATA[
+window.__TiaraObj = { startTime:new Date() };
+var CAFEAPP = {
+    ISCUBE : true,
+    DEFAULTFONTSIZE : '9',
+    GRPID : "1Rrvk",
+    GRPID_PK : "KBBaje--Mp10",
+    GRPNAME : "\uC624\uB8E1\uB3D9\uC131\uB2F9\uAD00\uB9AC\uC6A9",
+    MGRPID : "",
+    FLDID : "",
+    SUB_LAYOUT_TYPE : "type2_1", 
+    SUB_WIDTH_TYPE : "fixed2_1",
+    CAFE_ENCRYPT_LOGIN_USERID : "3pwY4gDWPmY0",
+	IS_NO_AUTH_SIMPLEID : false,
+    MEMBER_MEMBER : true,
+    CAFEINFO_currentPublic : true,
+    CAFEON : false,
+    NOT_EDITOR : true,
+    FORM_stipulation : true,
+    MEMBER_NICKNAME : "\uC624\uB8E1\uB3D9\uC131\uB2F9",
+    MEMBER_ROLECODE : "40",
+    CAFEINFO_sleep : false,
+    GRPCODE : "5DragonAdmin",   
+    CAFE_TEMPLATE_TYPE_CODE : "",
+    CATEID : "Md"
+};
+//]]>
+</script>
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/73/2009/member_person_module.js"></script>
+<script type="text/javascript">//<![CDATA[
+document.domain = "daum.net";
 
-	//components
+function showSideView(curObj, userid, planetUserid, targetNick, isAdmin, isGuest) {
+			var isMine = ("3pwY4gDWPmY0" == userid) ? true : false;
+		var sideView = new SideView('nameContextMenu', curObj, userid, planetUserid, '\uC624\uB8E1\uB3D9\uC131\uB2F9', targetNick, '\uC624\uB8E1\uB3D9\uC131\uB2F9\uAD00\uB9AC\uC6A9', '', '40', isAdmin, isGuest, isMine);
+		sideView.showLayer();
+	}
+
+function showGroupSideView(curObj, mgrpid, userid, planetUserid, targetNick) {
+			var sideView = new SideView('nameContextMenu', curObj, userid, planetUserid, '\uC624\uB8E1\uB3D9\uC131\uB2F9', targetNick, '1Rrvk', mgrpid, '\uC624\uB8E1\uB3D9\uC131\uB2F9\uAD00\uB9AC\uC6A9', '', '40');
+		sideView.showLayer();
+	}
+//]]>
+</script><script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/3/2009/activeX.js"></script>
+<script type="text/javascript">//<![CDATA[
+CAFEAPP.ui = {
+	SCROLL_TO_MEMO : false,
+	ISPREVIEW : false,
+	MEMO_ENTR_ISWRITEPERM : "",
+	SERVERNAME : "cafe469.daum.net"	
+};
+//]]>
+</script>
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/54/2009/home.js"></script>
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/68/2009/entrance_viewer.js"></script>
+</head>
+<body id="cafeLayout" class="type2_1 fixed2_1">
+<div id="wrap">
+
+<div id="upper">
+	<script type="text/javascript" language="javascript">
+function url_write(str,idx){
+	var locationStr = document.location.toString();
+
+	try{
+		var temp = locationStr.split("?","2");
+		var spObj = temp[1];
+		var spObj2 = spObj.split("&");
+		var len = spObj2.length;
+
+		for(var i=0; i<len; i++){
+			var searchParam = spObj2[i].indexOf(str);
+			if(searchParam == "0"){
+				searchParam = i;
+				var spVal = spObj2[i];
+				var wVal = spVal.substring(idx,spVal.length);
+				break;
+			}
+		}
+		return wVal;
+	}catch(e){}
+}
+//프레임 싸주기
+
+// 검색 관련 프레임 씌우기 시작.
+// 검색에서 온 정보성 게시글에서 다른 링크로 이동시 펌 링크 주소 없애고 카페주소 보이기 위해 다시 씌움(카페온 실행 용도도 있음)
+var isSearchProcess = false;
+try {	
 	
-    daum.sp.include("cube.dao.DAOCalls");
-    daum.sp.include("cube.utility.DWRUtil");
-    daum.sp.include("cube.utility.ServerErrorHandler");
-
-	daum.sp.include("cube.view.entrance.EntranceDetailView");
-	daum.sp.include("cube.view.entrance.EntranceManagerView");
-	daum.sp.include("cube.view.entrance.EntranceWriteView");
-	daum.sp.include("cube.controller.entrance.EntranceManagerController");
-	daum.sp.include("cube.controller.entrance.EntranceDetailController");
-	daum.sp.include("cube.controller.entrance.EntranceWriteController");
-
-	//mocha, affogato
-	var _mochaeditor_id = "MochaEditor";
-	var _affogato_id = "AffogatoBase";
-
-	var _mochaeditor_ver = "2012020601";
-	var _mochaviewer_ver = "2012020601";
-	var _affogato_ver = "20091228";
-
-	function mochaeditor(){
-		return daum.$(_mochaeditor_id);
+	if (document.location.href.indexOf("cafesearch") != -1) {
+		//for quizevent
+		var quizEvent = url_write("quizevent=","10");
+		if(quizEvent == 1 && "down" != window.name){
+			var today = new Date();
+			var expires = new Date(today.getTime() + (30*1000));
+			document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe469.daum.net; path=/; expires=" + expires.toGMTString();
+			top.location.href = "http://cafe.daum.net/5DragonAdmin";
+		}
+	}
+	else if (top.isSearch && location.href.indexOf("bbs_search_read") == -1) { //검색용 cindex가 쌓여있다면...또한 검색 페이지가 아니면..		
+		var today = new Date();
+		var expires = new Date(today.getTime() + (30*1000));
+		document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe469.daum.net; path=/; expires=" + expires.toGMTString();		
+		top.location.href = "http://cafe.daum.net/5DragonAdmin";
+		isSearchProcess = true;
 	}
 	
-	function affogato(){
-		return daum.$(_affogato_id);
+	//스팸툴에서 열렸을 경우 프레임을 씌우지 않는다! (2010-07-21 by 전성호)
+	try {
+		if (opener.location.href.indexOf("kiss.daum.net") != -1) {
+			isSearchProcess = true;
+		}
+	} catch (err2) {}
+	
+} catch (err) {
+
+}
+
+// 검색 관련 프레임 씌우기 끝.
+if (isSearchProcess) {
+} else if (document.referrer.indexOf("www.daum.net") != -1 || document.referrer.indexOf("cafe.daum.net") != -1) {
+	if ( !top.down ) {
+		if (location.href.indexOf("_top__ranking") == -1 && location.href.indexOf("_top_wow") == -1 && location.href.indexOf("bbs_search_read") == -1) {
+			
+			if (location.href.indexOf("_c21_/join_register") != -1 || location.href.indexOf("_c21_/chat_home") != -1 || location.href.indexOf("_c21_/bbs_list") != -1 ) {
+				var today = new Date();
+				var expires = new Date(today.getTime() + (30*1000));
+				document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe469.daum.net; path=/; expires=" + expires.toGMTString();
+				top.location.href = "http://cafe.daum.net/5DragonAdmin";
+			}
+		}
 	}
-
-	function setHeight(height){
-		mochaeditor().height = height + "px";
+} else if (location.href.indexOf("bbs_search_read") != -1) {
+	// 즐겨 찾기를 위해
+} else if (document.location.href.indexOf("cafesearch") != -1) {
+	//카페 검색을 위해(꼬릿말 팝업)
+} else {
+	if ( "down" != window.name ) {
+		var today = new Date();
+		var expires = new Date(today.getTime() + (30*1000));
+		document.cookie = "TCH" + "=" + encodeURIComponent(document.location.href) + "; domain=cafe469.daum.net; path=/; expires=" + expires.toGMTString();
+		top.location.href = "http://cafe.daum.net/5DragonAdmin";
 	}
+}
 
-	window.EMC = {};
-	EMC.mc = cube.controller.entrance.EntranceManagerController;
-	EMC.dc = cube.controller.entrance.EntranceDetailController;
-	EMC.wc = cube.controller.entrance.EntranceWriteController;
-	EMC.mv = cube.view.entrance.EntranceManagerView;
-	EMC.dv = cube.view.entrance.EntranceDetailView;
-	EMC.option = {};
+</script> 
+</div><!-- end upper -->
+<div id="cafe_gnb">
+    	<div id="notiList" class="simple_notice" style="display:none">
+	<ul id="notiList_scroll" style="top:0;">
 
-	window.ENTRANCEPANEL = { 
-		componentList: new Array( { article: {}, styleConfig:{ map: {} } } ), 
-		styleConfig: { map: { visible: true } } 
-	};
+		
+		
+		    	    
+	    	
+				
+				
+		
+		
+	</ul>
+	</div>
+	<script type="text/javascript">//<![CDATA[
+    swfobject.addDomLoadEvent(function(){
+        window.ScrollNoti = new Scrolling("notiList",3000,26);
+    });
+	//]]>
+	</script>
+	<div id="minidaum">
+		<ul>
+			<li class="go_daum"><a href="http://www.daum.net/?t__nil_navi=daum" target="_top" class="fl">Daum</a></li>
+			<li class="bar">|</li>
+			<li><a href="http://cafe.daum.net?t__nil_navi=cafehome" target="_top" class="fl">카페</a></li>
+			<li class="bar">|</li>
+			<li><div id="cafe_favCafeWrap">
+	<a id="cafe_favCafeTitle" href="#" onclick="FavCafeList.toggle(); return false;">자주가는 카페</a>
+	<div id="cafe_favCafeListLayer" class="scroll" style="display:none;">
+	<ul id="cafe_favCafeList">
+			<li class="favor_line"></li>
+		<li><a class="system" href="http://cafe.daum.net/_c21_/mine_main" target="_top">- 전체보기</a></li>
+		<li><a class="system" href="http://cafe.daum.net/_c21_/mine_main?mode=edit" target="_top">- 편집</a></li>
+		<li><a class="system" href="http://mail.daum.net/msg/index.daum#ViewCafeMsgBoxCmd:fromPage=,toPage=,first=,last=,grpid=,mode=" target="_top">- 내 쪽지</a></li>
+		<li><a class="system" href="http://cafe.daum.net/_c21_/game_home" target="_top">- 내 카페게임</a></li>
+		</ul>
+	<iframe id="cafe_favCafeBackboard" src="about:blank" scrolling="no" frameborder="0"></iframe>
+	</div>
+</div><script type="text/javascript">//<![CDATA[
+swfobject.addDomLoadEvent(function(){
+	FavCafeList.wrap = $('cafe_favCafeWrap');
+	FavCafeList.title = $('cafe_favCafeTitle');
+	FavCafeList.layer = $('cafe_favCafeListLayer');
+	FavCafeList.list = $('cafe_favCafeList');
+	FavCafeList.backboard = $('cafe_favCafeBackboard');
+	FavCafeList.login = "true";
+	FavCafeList.init();
+});
+// ]]>
+</script>
+</li>
+			<li class="bar">|</li>			
+			<li><a href="http://mail.daum.net/hanmail/Goto.daum?error=login&amp;t__nil_navi=mail" target="_top" class="fl">메일</a></li>
+			<li class="bar">|</li>
+			<li><a href="http://blog.daum.net/?t__nil_navi=bloghome" target="_top" class="fl">블로그</a></li>
+			<li class="bar">|</li>
+			<li><a href="http://yozm.daum.net/?t__nil_navi=yozm" target="_top" class="fl">요즘</a></li>
+			<li class="bar">|</li>						
+			<li>
+				<div id="daumServiceLinkWrap">
+					<a id="daumServiceLink" href="#" onclick="ServiceList.toggle(); return false;">바로가기</a>
+					<div id="daumServiceLayer" style="display: none;">
+						<ul>
+							<li><a href="http://media.daum.net/?t__nil_navi=news" target="_top">뉴스</a></li>
+							<li><a href="http://game.daum.net/?t__nil_navi=game" target="_top">게임</a></li>
+							<li><a href="http://music.daum.net/?t__nil_navi=music" target="_top">뮤직</a></li>
+							<li><a href="http://widgetbank.daum.net/?t__nil_navi=widgetbank" target="_top">위젯뱅크</a></li>
+							<li><a href="http://tvpot.daum.net/?t__nil_navi=tvpot" target="_top">tv팟</a></li>
+							<li><a href="http://social.shopping.daum.net/?t__nil_navi=socialshopping" target="_top">소셜쇼핑</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li class="mini_btn">
+				<a href="#" class="btn fl" onclick="logout();return false;"><span class="btn_bg bg05" style="width:4px;"></span><span class="btn_txt bt05 w05 p11" style="width:44px; line-height: 22px;">로그아웃</span></a>
+			</li>
+			<li class="mini_btn">
+				<div id="wrapMinidaum" style="display: none"></div>
+				<a href="#" class="btn fl" onclick="cafeAppLayer.showWrapMini(); return false;" onmouseover="cafeAppLayer.showWrapMini();" onmouseout="cafeAppLayer.hideWrapMini();"><span class="btn_bg bg05" style="width:4px;"></span>
+				<span class="btn_txt bt05 w05 p11" style="width: 78px; line-height: 22px;">
+				카페앱 설치
+				<img src="http://i1.daumcdn.net/cafeimg/top8/cafe/etc/ico_givemecafeapp.png" width="16" height="16" alt="" style="vertical-align: -4px; margin-top: 2px;" />
+				</span></a>
+			</li>
+		</ul>
+		<script type="text/javascript">
+			minidaum.init();
+		</script>
+		
+	</div>
+</div><!-- end cafe_gnb --><div class="cl">&nbsp;</div>	<div id="header">
+		<div id="title" style="height:138px;">
+					<div id="TITLEHOMELINK" onclick="caller('/_c21_/home?grpid=1Rrvk');" class="hand"></div>
+					<div id="TITLECAFENAME">
+				<h1><a href="/_c21_/home?grpid=1Rrvk">오룡동성당관리용</a></h1>
+				<a href="/_c21_/home?grpid=1Rrvk"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" alt="오룡동성당관리용" /></a>
+			</div>
+							<div id="TITLECAFEADDRESS"> 
+				<h2><a href="/_c21_/home?grpid=1Rrvk">http://cafe.daum.net/5DragonAdmin</a></h2>
+				<a href="/_c21_/home?grpid=1Rrvk"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" alt="http://cafe.daum.net/5DragonAdmin" /></a>
+			</div>
+							<div id="TITLEMENUGROUP">
+				<div class="roundL"></div>
+				<ul id="menuItemList">
+																										<li >
+								<div><a href="/_c21_/recent_bbs_list?grpid=1Rrvk&amp;fldid=_rec" class="menu1 first">최신글 보기</a></div>
+							</li>
+																																								<li class="mbar">|</li>
+							<li >
+								<div><a href="/_c21_/favor_bbs_list?grpid=1Rrvk" class="menu2">인기글 보기</a></div>
+							</li>							
+																																	<li class="mbar">|</li>
+							<li >
+								<div><a href="/_c21_/image_bbs_list?grpid=1Rrvk" class="menu3">이미지 보기</a></div>
+							</li>							
+																																	<li class="mbar">|</li>
+							<li >
+								<div><a href="/_c21_/movie_bbs_list?grpid=1Rrvk" class="menu4">동영상 보기</a></div>
+							</li>							
+																												</ul>
+				<div class="roundR"></div>
+			</div>
+							<div id="TITLESEARCH">
+				<form id="titleSearchBox" name="titleSearchBox" method="get" action="/_c21_/searchpreview" onsubmit="goTitleCafeSearch();return false;">
+					<div class="searchBg">
+						<input type="hidden" name="grpid" value="1Rrvk" />
+						<input type="text" name="query" value="" class="inpSearch" />
+						<input type="image" src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" class="btnSearch" />
+					</div>
+				</form>
+			</div>
+						</div><!-- end title -->
+		</div><!-- end header  -->
+    <div id="container">
+        <div id="cafemenu">
+			
+<!--  Menu panel 시작  -->
 
-	function initManager(){
+							<form name="searchMyForm" action="/_c21_/member_article_cafesearch" method="get">
+	<input type="hidden" name="item" value="userid" />
+	<input type="hidden" name="jobcode" value="1" />
+	<input type="hidden" name="grpid" value="1Rrvk" />
+</form>
 
-	    var entType= "slide_3d";
-	    switch (entType){
-	    	case "pie" : $("BtnEntranceTyepPie").onclick(); break;
-	    	case "frame" : $("BtnEntranceTyepStack").onclick(); break;
-	    	case "slide" : $("BtnEntranceTyepSlideCycle").onclick(); break;	    	
-  	
-	    	case "slide_3d" : $("BtnEntranceTyepSlideCylinder").onclick(); break;	    	
-	    	case "random" : $("BtnEntranceTyepSlideStack").onclick(); break;	    	
-	    	case "wide" : $("BtnEntranceTyepSlideWide").onclick(); break;	    	
-	    	default : $("BtnEntranceTyepPie").onclick();
+<script type="text/javascript">//<![CDATA[
+function changeInfo_tab(type){
+	var my_list = document.getElementById('myinfo_list');
+	var my_btn = document.getElementById("btn_myinfo_list");
+	
+	if (!my_list) { return; }
+	
+	if(!true){
+		window.open("/_c21_/poplogin?grpid=1Rrvk","poplogin", 'width=450,height=300,resizable=no,scrollbars=no');
+		return;
+	}
+	if(!true){
+		if (confirm("카페 가입 후 이용 가능합니다.\n 가입 하시겠습니까?")){
+			location.href = "/_c21_/join_register?grpid=1Rrvk";
+			return;
+		} else { 
+			return;
+		}
+	}
+	
+	if( my_list.className == "myinfo none" ){	
+			my_list.className = "myinfo block";
+		my_btn.innerHTML = '<img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="13" height="13" alt="" class="icon_hide"><span class="arrow">▲</span>';
+		} else {		
+			my_list.className = "myinfo none";
+		my_btn.innerHTML = '<img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="13" height="13" alt="" class="icon_view"><span class="arrow">▼</span>';
+		}
+    setTimeout(function() {
+        daum.Element.removeClassName('cafeinfo', 'x-repaint');
+	}, 200);
+}
+// ]]>
+</script>
+
+<div class="cafeinfoBox">	
+	<div class="cafeinfo_bg">
+										<div id="cafeinfo" class="cafeinfo_bg overbg">
+			<div id="cafeinfo_list" class="cafeinfo">
+				<ul>
+					<li class="first">							
+						<img src="http://i1.daumcdn.net/cafeimg/hanmail/cf_img/rank/icon/rank_026.gif" width="20" height="20" alt="26단계(1064점)" class="imgR" /><strong>식물</strong> (공개)
+																																																																																																																																									</li>
+					<li><span class="info_tit">카페지기</span>								
+												<a href="#" onclick="goManager('1Rrvk', ''); return false;" class="txt_point fl" title="&#50724;&#47329;&#46041;&#49457;&#45817;">오룡동성당</a>
+											</li>
+					<li><span class="info_tit"><a href="/_c21_/memberlist?grpid=1Rrvk" onclick="caller(this.href);return false;">회원수</a></span><span class="txt_point num fl"><a href="/_c21_/memberlist?grpid=1Rrvk" onclick="caller(this.href);return false;" class="txt_point num">1</a></span></li>
+					<li><span class="info_tit"><a href="/_c21_/founder_member_admin_v2?grpid=1Rrvk&amp;mgrpid=&amp;searchyn=Y&amp;searchmode=6&amp;year=2013&amp;month=04&amp;day=16&amp;period=1">방문수</a></span><span class="txt_point num fl"><a href="/_c21_/founder_member_admin_v2?grpid=1Rrvk&amp;mgrpid=&amp;searchyn=Y&amp;searchmode=6&amp;year=2013&amp;month=04&amp;day=16&amp;period=1" class="txt_point num">30</a></span>
+					</li>
+					<li class="last"><a href="http://blog.daum.net/cafe_notice/2328" target="_blank" class="info_tit">카페앱수</a><span class="txt_point num fl">0</span>
+						<a href="/_c21_/cafe_profile?grpid=1Rrvk" class="opacity u fr p11">프로필</a>
+					</li>
+				</ul>
+			</div><!-- end cafeinfo -->
+			<div class="cafeinfo_bg overbg">
+				<div class="myList">
+										<div class="infobox_line infoLine top">&nbsp;</div>
+					<div class="myFolder"><a href="#" onclick="changeInfo_tab('myinfo_list'); return false;" class="hand"><span id="btn_myinfo_list"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="13" height="13" alt="" class="icon_view" /><span class="arrow">▼</span></span> 내 정보</a> <span id="alimi_new" class="alimi_new"></span></div>
+										<div id="myinfo_list" class="myinfo none">
+						<ul>
+							<li class=" first">
+								<span class="fl">
+																											<img src="http://i1.daumcdn.net/cafeimg/cf_img2/bbs2/a_level_40.gif" width="13" height="13" alt="카페지기(카페지기)" class="vam" />
+																												<a href="#" onclick="showSideView(this,'3pwY4gDWPmY0','','&#50724;&#47329;&#46041;&#49457;&#45817;');return false;" title="오룡동성당"><strong>오룡동성당</strong></a>								
+																									</span>
+								<a href="/_c21_/join_edit?grpid=1Rrvk" class="opacity u fr p11">수정</a>							</li>
+							<li><span class="roleName">&#52852;&#54168;&#51648;&#44592;</span></li>
+							<li>
+								<span class="info_tit"><a href="#" onclick="goHanmailBox(); return false;">메일 <span id="mail_cnt" class="txt_point num">0</span></a></span>
+								<span class="fl"><a href="#" onclick="goWebMemoBox(); return false;">쪽지 <span id="webmemo_cnt" class="txt_point num">읽기</span></a> <span id="webmemo_new"></span></span>
+							</li>
+							<li class="last">
+								<span class="info_tit"><a href="/_c21_/member_article_cafesearch?item=userid&grpid=1Rrvk">내가 쓴 글</a></span>
+								<span class="fl"><a href="/_c21_/my_alimi?grpid=1Rrvk">내 활동 알림</a> <span id="my_alimi_new"></span></span>				
+							</li>
+						</ul>					
+					</div><!-- end cafeinfo -->
+				</div><!-- end myList -->
+				<div class="btn_area">
+																	
+																											
+																						<a href="/_c21_/united_write?grpid=1Rrvk&amp;mgrpid=&amp;fldid=&amp;page=1" onclick="caller(this.href); return false;"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="159" height="35" alt="카페 글쓰기" class="btn_write" /></a><br />
+																															<!-- btn_admin2 -->
+				</div><!-- end btn_area -->
+				
+								<div class="infobox_line infoLine infoLineB">&nbsp;</div>
+				<div class="btn_admin_area"><a href="/_c21_/founder_home?grpid=1Rrvk&amp;type=&amp;log="><strong>관리</strong></a><span class="bar">|</span><a href="/_c21_/founder_home_management?grpid=1Rrvk&amp;mode=cube_skin"><strong>꾸미기</strong></a></div>
+								<div class="cl">&nbsp;</div>
+			</div>
+		</div>
+	</div><!-- end cafeinfo_bg -->
+	<div class="cafeinfoBoxT">&nbsp;</div>
+</div><!-- end cafeinfoBox -->
+<div class="cl">&nbsp;</div>
+
+<script type="text/javascript">//<![CDATA[
+	setTimeout("initPersonalArea()", 3000);
+// ]]>
+</script>
+								<div class="menuBox"><div class="menuBoxIn">
+						<div id="menu_folder" style="display:  none ;">
+				<div class="menuBoxT">&nbsp;</div>
+				<div class="menuListBox"><div class="menuList">
+				<ul>
+					<li class="depth1">
+						<div id='div_menu_folder'>
+						<div class="group_tit"><h3><a href="#" onclick="showMenuList();return false;">카페 전체 메뉴</a></h3></div>
+						<div class="group_ic" id="div_menu_folder_ico"><a href="#" onclick="showMenuList();return false;"><span class="arrow">▲</span><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="14" height="14" class="icon_view01" alt="" /></a></div></div>
+					</li>
+				</ul>
+				</div></div>
+				<div class="menuBoxB">&nbsp;</div>
+			</div><!-- end menu_folder -->
+						<div id="menu_folder_list" style="display:block;">
+			<div class="menuBoxT">&nbsp;</div>
+			<div class="menuListBox"><div class="menuList">
+						<noscript>
+				<!--[if IE]>
+				<iframe name="leftmenu" id="leftmenu" frameborder="0" scrolling="no" width="100%" height="400" title="카페 메뉴" src="/_c21_/bbs_menu_ajax?grpid=1Rrvk&bmt=2013041613333920130416130907.7420130403133723.5520130416130906.64a" allowtransparency="true"></iframe>
+				<![endif]-->
+				<!--[if !IE]><!-->
+				<iframe name="leftmenu" id="leftmenu" frameborder="0" scrolling="no" width="100%" height="400" title="카페 메뉴" src="/_c21_/bbs_menu_ajax?grpid=1Rrvk&bmt=2013041613333920130416130907.7420130403133723.5520130416130906.64a"></iframe>
+				<!--<![endif]-->
+			</noscript>
+			<div id="leftmenu"></div>
+			<script type="text/javascript">
+				(function(){
+					var menuKey = '2013041613333920130416130907.7420130403133723.5520130416130906.64a';
+					var menuUrl = '/_c21_/bbs_menu_ajax?grpid=1Rrvk&bmt=2013041613333920130416130907.7420130403133723.5520130416130906.64a';
+					
+					var leftmenu = daum.$("leftmenu");
+					if(leftmenu){
+						var menuContent = null;
+						if (typeof window.sessionStorage !== 'undefined'  && false ) {
+							try {
+								menuContent = sessionStorage.getItem(menuKey) != null ? unescape(sessionStorage.getItem(menuKey)) : null;
+							} catch (e) {
+								// ignore not supported browser
+							}
+						}
+						if (menuContent != null) {
+							leftmenu.innerHTML = menuContent;
+							if(daum.Browser.webkit){
+								daum.Element.removeClassName("menuList", "noscript");
+							}
+							menu_select();
+						} else {
+							if(daum.Browser.ie6){
+								menuUrl += "&ie6="+ (new Date());
+							}
+							var cafeMenuAjax = new daum.Ajax({url : menuUrl,	
+								method: "GET",
+								onsuccess: function(response){
+									leftmenu.innerHTML = response.responseText;
+									if(daum.Browser.webkit){
+										daum.Element.removeClassName("menuList", "noscript");
+									}
+									if (typeof window.sessionStorage !== 'undefined') {
+										try {
+											sessionStorage.setItem(menuKey, escape(response.responseText));
+										} catch (e) {
+											// private browsing mode
+										}
+									}
+									menu_select();
+								},
+								onfailure: function(response){
+									var extraString = "";
+									try{
+										if (response.status == 406) {
+											return;
+										}
+										extraString += response.status + ";" + response.statusText + ";" + response.getAllResponseHeaders();
+									}catch(e){
+									}
+									new daum.Ajax({url: "http://magpie.daum.net/magpie/opencounter/Open.do?service=cafe&key=CAFE_AJAX_MENU&extra=" + encodeURIComponent(extraString)}).request();
+									// 메시지 처리??
+								}
+							});
+							cafeMenuAjax.request();
+						}
+					}
+				})();
+				
+				function menu_select(){
+				
+					var parUrl = document.location.href;
+					var re1 = new RegExp( "hotissue_" );
+					var re_recent = new RegExp( "recent_bbs_" );
+					var re_favor = new RegExp( "favor_bbs_" );
+					var re_image = new RegExp( "image_bbs_" );
+					var re_movie = new RegExp( "movie_bbs_" );
+					var re_poll = new RegExp( "poll_list" );
+				  	var obj, fldid, sum; 
+					 
+					if ( null != re1.exec( parUrl ) ) {	
+						obj = document.getElementById( "link_hotissue" );
+						if ( null != obj ) obj.className = 'u';
+					} else if ( null != re_recent.exec(parUrl)) {
+						obj = document.getElementById( "fldlink_recent_bbs" );		
+						if (null != obj ){
+							obj.className = "u b";
+						}			
+					} else if ( null != re_favor.exec(parUrl)) {
+						obj = document.getElementById( "fldlink_favor_bbs" );
+						if (null != obj ){
+							obj.className = "u b";
+						}			
+					} else if ( null != re_image.exec(parUrl)) {
+						obj = document.getElementById( "fldlink_image_bbs" );
+						if (null != obj ){
+							obj.className = "u b";
+						}			
+					} else if ( null != re_movie.exec(parUrl)) {
+						obj = document.getElementById( "fldlink_movie_bbs" );		
+						if (null != obj ){
+							obj.className = "u b";
+						}			
+					} else if ( null != re_poll.exec(parUrl)) {
+						obj = document.getElementById( "fldlink_poll_bbs" );		
+						if (null != obj ){
+							obj.className = "u b";
+						}			
+					}  else {
+						var re2 = new RegExp( "&fldid=([_0-9a-zA-Z]+)" );
+						match2 = re2.exec( parUrl );
+						if ( null != match2 && 2 == match2.length ) {
+							fldid = match2[1];
+							sum = 0;
+							for ( i = 0; i < fldid.length; i++ ) {
+								sum += fldid.charCodeAt(i);
+							}
+							obj = document.getElementById("fldlink_" + fldid + "_" + sum);
+							if ( null != obj ) {
+								obj.className = 'u b';
+							}
+						}
+					}
+				}
+			</script>
+				<ul class="cafe_smenu">
+					<li class="group_line"></li>
+												<li class="icon_etc">
+							<a href="/_c21_/invite_v2?grpid=1Rrvk">카페 초대</a>
+						</li>
+						<li class="icon_etc"><a href="/_c21_/memberlist?grpid=1Rrvk">회원 보기</a></li>
+										</ul>
+			</div></div>
+			<div class="menuBoxB">&nbsp;</div>	
+			</div><!-- end menu_folder_list -->
+		</div></div><div class="cl">&nbsp;</div><!-- end menuBox -->
+								<!-- 검색엔진 -->
+<div class="searchBox">
+	<form name="bbssearchBox" method="get" action="#" onsubmit="goBbsCafeSearch();return false;">
+		<input type="text" id="query" name="query" value="" size="20" class="inp_search" />
+		<input type="image" src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" title="검색" alt="검색" class="btn_search" />
+		<input type="hidden" name="item" value="preview" />
+		<input type="hidden" name="grpid" value="1Rrvk" />
+	</form>
+</div>			<!--  Menu panel 끝  -->
+
+<!--  Accessary panel 시작  -->
+					<!-- 메뉴 밑에 붙는 Accessary panel -->
+						<div id="sidebar1">
+								</div><!-- end sidebar1 -->
+						
+									<div id="sideAd" class="line"></div> 			
+						<div class="side_rss">
+								<a href="http://cafe.daum.net/xml/rss/5DragonAdmin" onclick="copyCafeRssChannel(this.href);return false;" class="rss p11">RSS</a>
+												<span class="bar2 p11">|</span>
+																		<img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="13" height="13" alt="별" class="icon_favor" />&nbsp;<a href="http://cafe.daum.net/_c21_/add_favorite_cafe?grpid=1Rrvk" onclick="favorite_frame.addFavorite(this.href);return false;" class="p11">자주가는카페 추가</a>
+					<iframe name="favorite_frame" src="http://cafe.daum.net/_cafe/favoritecafe_domain_blank.html" width="0" height="0" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+												</div>
+						
+							<script type="text/javascript">//<![CDATA[
+					function member_exit() {
+											if (confirm(
+							"카페를 탈퇴하셔도 작성하신 게시물이 자동으로 삭제되지는 않습니다. \n\n정말로 탈퇴 하시겠습니까?")) 
+						{
+							return true;
+						} else {
+							return false;
+						}
+										}
+				// ]]>
+				</script>
+				<div class="side_secede">
+					<a href="/_c21_/member_exit?grpid=1Rrvk&TSEP=9QMR76Lk9tpcIiOYBzDAZw00" onclick="return member_exit();" class="p11">카페 탈퇴</a><span class="arrow">▶</span>
+				</div>
+						
+		
+
+
+        </div>
+
+        <div id="content" class="main">
+                	
+            <div id="intro2"><div class="intro_con2">
+			
+	 
+
+
+
+
+
+
+
+
+
+
+<!-- 컬쳐라운지 start-->
+<!-- 컬쳐라운지 end  -->			<script type="text/javascript">//<![CDATA[
+	function getViewerLayout() {
+		var layoutNum = "2";
+		return layoutNum;
+	}
+	
+	function setViewerHeight(height, obj){
+		var flashObj = (!obj) ? document.getElementById('mocha_viewer') : document.getElementById(obj);
+		flashObj.height = height+"px";
+	}
+		(function(){
+	    /*
+	     * getStyle function based on by PPK
+	     * http://www.quirksmode.org/dom/getstyles.html
+	     */
+	    	    	    function getStyle(e, cssProperty, mozCssProperty){           
+	        var mozCssProperty = mozCssProperty || cssProperty
+	        return (e.currentStyle) ? e.currentStyle[cssProperty] : document.defaultView.getComputedStyle(e, null).getPropertyValue(mozCssProperty);  
 	    }
-
-		EMC.option["widthCounter"]= new cube.widget.SelectBox("ArrayWidthCounter");
-		EMC.option["heightCounter"]= new cube.widget.SelectBox("ArrayHeightCounter");
 		
-		
-		// 간격
-		EMC.option["spaceCounterSlider"]= new dhtmlxSlider("ArraySpaceCounterSlider", 60, null, null, 0, 90, 15, 5);
-		EMC.option["spaceCounterSlider"].linkTo('ArraySpaceCounter');
-		EMC.option["spaceCounterSlider"].init();
-		EMC.option["spaceCounterSlider"].onChangeFunc= cube.controller.entrance.EntranceDetailController.onChangeSpaceCount;
-	    EMC.option["spaceCounterSlider"].attachEvent("onChange", function(newValue, sliderObj){ 
-	    	this.onChangeFunc();
-	    });
-	    EMC.option["spaceCounterSlider"].goLeft= function(){
-	    	this.setValue(this.getValue()-this._step);
-	    	this.onChangeFunc();
+	    function rgb2hex(rgbstr){
+	        function toHex(n){
+	            if(n == null){
+	                return "00";
+	            }
+	            n = parseInt(n);
+	            if(n == 0 || isNaN(n)){
+	                return "00";
+	            }
+	            n = Math.max(0,n);
+	            n = Math.min(n,255);
+	            n = Math.round(n);
+	            return "0123456789ABCDEF".charAt((n - n % 16) / 16) + "0123456789ABCDEF".charAt(n % 16);
+	        }
+	        
+	        var result = rgbstr.match(/^\s*rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*/);
+	        if(result == null || result.length != 4){
+	            return "#000000";
+	        }
+	        return "#" + toHex(result[1]) + toHex(result[2]) + toHex(result[3]);
 	    }
-	    EMC.option["spaceCounterSlider"].goRight= function(){
-	    	this.setValue(this.getValue()+this._step);
-	    	this.onChangeFunc();
+                function hexColorFilter(color){
+            if(color.match(/rgb\([0-9,\s]+\)/)){
+                return rgb2hex(color);
+            }else{
+                return color;
+            }
+        }
+		
+		window.getPageBackgroundColor = function(){
+		    var optStyleColor = "#ffffff";
+            var color = (optStyleColor == "") ? getStyle(document.body, "backgroundColor", "background-color") : optStyleColor;
+            return hexColorFilter(color);
 	    }
-		
-		// 모서리
-		EMC.option["cornerCounterSlider"]= new dhtmlxSlider("ArrayCornerCounterSlider", 60, null, null, 0, 90, 15, 5);
-		EMC.option["cornerCounterSlider"].linkTo('ArrayCornerCounter');
-		EMC.option["cornerCounterSlider"].init();
-		EMC.option["cornerCounterSlider"].onChangeFunc= cube.controller.entrance.EntranceDetailController.onChangeCornerCount;
-	    EMC.option["cornerCounterSlider"].attachEvent("onChange", function(newValue, sliderObj){ 
-	    	this.onChangeFunc();
-	    });
-	    EMC.option["cornerCounterSlider"].goLeft= EMC.option["spaceCounterSlider"].goLeft;
-	    EMC.option["cornerCounterSlider"].goRight= EMC.option["spaceCounterSlider"].goRight;
-		
-		// 기울기
-		EMC.option["slopeCounterSlider"]= new dhtmlxSlider("ArraySlopeCounterSlider", 60, null, null, -45, 45, 0, 5);
-		EMC.option["slopeCounterSlider"].linkTo('ArraySlopeCounter');
-		EMC.option["slopeCounterSlider"].init();
-		EMC.option["slopeCounterSlider"].onChangeFunc= cube.controller.entrance.EntranceDetailController.onChangeSlopeCount;
-	    EMC.option["slopeCounterSlider"].attachEvent("onChange", function(newValue, sliderObj){ 
-	    	this.onChangeFunc();
-	    });
-	    EMC.option["slopeCounterSlider"].goLeft= EMC.option["spaceCounterSlider"].goLeft;
-	    EMC.option["slopeCounterSlider"].goRight= EMC.option["spaceCounterSlider"].goRight;
-		
-		// 테두리 
-		EMC.option["checkBoxOutlineFlag"]= new cube.widget.CheckBox("OutlineFlag");	    
-
-		// 배경색 컬러 피커
-	    EMC.dc.backgroundColorSelectBox = new cube.widget.ColorSelectBox("EntBody_bgcolor", {
-	        defaultColor: "#ffffff",
-	        isAppend: true,
-	        callback: cube.controller.entrance.EntranceDetailController.onChangeBackgroundColor
-	    });
-
-		// 타이틀색 컬러 피커
-	    EMC.wc.titleFontColorBox = new cube.widget.ColorSelectBox("tcTitleFontColor", {
-	        defaultColor: "#ffffff",
-	        isAppend: true,
-	        callback: cube.controller.entrance.EntranceWriteController.onChangeFontColor
-	    });
-
-	    // 내용 컬러 피커
-	    EMC.wc.contentFontColorBox = new cube.widget.ColorSelectBox("tcContentFontColor", {
-	        defaultColor: "#ffffff",
-	        isAppend: true,
-	        callback: cube.controller.entrance.EntranceWriteController.onChangeContentFontColor
-	    });
-
-	    // 테두리 효과 컬러 피커
-	    EMC.wc.outlineFontColorBox = new cube.widget.ColorSelectBox("tcOutlineFontColor", {
-	        defaultColor: "#ffffff",
-	        isAppend: true,
-	        callback: cube.controller.entrance.EntranceWriteController.onChangeOutlineFontColor
-	    });   
+	    window.getPageDefaultFontColor = function(){
+	        var optStyleColor = "#444444";
+            var color = (optStyleColor == "") ? getStyle(document.body, "color") : optStyleColor;
+            return hexColorFilter(color);
+	    }
+        
+        	    if(typeof(window.daum) == "undefined"){ window.daum = new Object(); }
+	    if(typeof(window.daum.Browser) == "undefined"){
+	        window.daum.Browser = new Object();
+		    window.daum.Browser.ie = (navigator.userAgent.toLowerCase().indexOf("msie") != -1);
+	    }
+        	    
+    })(); 
+	
+	function getCafeHostForFlash() {
+		var node = "cafe469";
+		return node + ".daum.net";
 	}
+//]]>
+</script>
+<!-- 카페 대문 -->
+<script type="text/javascript">// <![CDATA[
+CAFEAPP_ENTRANCE["ISPREVIEW"]= false; //
+// ]]>
+</script>
 
-	function mocha_cmd_enable(){
-		//$("BtnEntranceApply").disabled="";
-		//$("BtnEntranceCancel").disabled="";
-		//$("BtnEntranceSave").disabled="";
-	}
-
-	function mocha_cmd_disable(){
-		//$("BtnEntranceApply").disabled="true";
-		//$("BtnEntranceCancel").disabled="true";
-		//$("BtnEntranceSave").disabled="true";
-	}
-
-	function mocha_cmd_callback(msg){
-	//	alert(msg);
-	//	mocha_cmd_enable();
-	}
-
-	var mocha_flashvars = {
-		coca_id:"CafeCubeCoca",
-		coca_sid:"sid",
-		coca_service:"cubeview",
+			
+						<script type="text/javascript">// <![CDATA[
+		CAFEAPP_ENTRANCE["flashversion"]= '2012020601';
+		// ]]>
+		</script>
+				
+					<div class="entrance_photo"><div id="photo_entrace_div">
+	<div class="not_flash_player">
+		<a href="http://www.adobe.com/go/getflashplayer" target="_blank"><img src="http://i1.daumcdn.net/cafeimg/cf_img4/design/common/get_adobe_flash_player.png" height="39" width="158" alt="플래시 플레이어를 설치해 주세요." /></a>
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+CAFEAPP_ENTRANCE["photo"]= {
+	photo_entrance_flashvars : {
+		coca_id:"CafeCoca",
+		coca_sid:"cafe",
+		coca_service:"cafe",
 		service_interface:"cafe",
-
 		cafe_host:"cafe469.daum.net",
 		cafe_grpid:"1Rrvk",
 		cafe_key:"0",
 		cafe_layout:"2",
-		cafe_repository_key:"",
-		cafe_repository_subject:"",
-		template_type: "slide_3d",
-
-		mocha_viewer_version:_mochaviewer_ver};
-	
-	var mocha_params = {
-		allowNetworking:"all",
+		mocha_viewer_version: CAFEAPP_ENTRANCE.flashversion
+	},
+	photo_entrance_params : { 	
 		allowscriptaccess:"always",
 		salign:"tl",
 		scale:"noscale",
-		wmode:"transparent",
-		quality:"high"
-	};
-	
-	var affogato_flashvars = {
-			preview:false,
-			size:28,
-			color:"#6c9d31",
-			text:"Cafe Cube::카페 큐브",
-			stroke:false,
-			shadow:false,
-			reflection:false };
-	
-	var affogato_params = {
-			bgcolor:"#ffffff",
-			allowscriptaccess:"always",
-			salign:"tl",
-			scale:"noscale",
-			quality:"high",
-			base:"http://cafeimg.daum-img.net/cf_img4/affogato/"};
+		quality:"high",
+		wmode:"transparent"
+	},
+	height : "295"
+};
 
-	function main(){
-        cube.dao.DAOCalls.getInstance(); // instrument DAOs
-        cube.utility.DWRUtil.configure();
-        new cube.utility.ServerErrorHandler().install();
+var photo_entrance_array;
+var photo_entrance_num;
 
-		daum.sp.debug("entrance management main() start!");
-		initManager();
-		
-		var component = ENTRANCEPANEL.componentList[0];
+try{
+	EntrancePhotoViewerRender();
+}catch(e){}
 
-	    Views._$("cube.view.entrance.EntranceBackgroundView").isFlash = true;
-	    Views._$('cube.view.entrance.EntranceTextView').isFlash = true;
-	    
-		Views._$("cube.view.entrance.EntranceBackgroundView").onBeforeRender = function(){
-		    Views._$("cube.view.entrance.EntranceBackgroundView").setModel(component.styleConfig.map || {});
-		}
+//]]>
+</script></div>
+				<div class="end_intro">&nbsp;</div>
+	<!-- 카페 대문 끝 -->
+			</div></div>
+            <div id="primaryContent"  class="home_type2" >
+				
 
-		Views._$("cube.view.entrance.EntranceBackgroundView").callback = function(model){
-			daum.sp.debug("entrance background configuration completed. result =>");
-			daum.sp.debug(model);
-			if(model.bgcolor) EMC.dc.onChangeBackgroundColor(model);
-			if(model.configid) EMC.dc.onChangeSkin(model);
-		}
-
-		Views._$('cube.view.entrance.EntranceTextView').onBeforeRender = function(){
-		    Views._$('cube.view.entrance.EntranceTextView').setModel(component.article || {});
-		}
-
-		Views._$('cube.view.entrance.EntranceTextView').callback = function(model){
-		    daum.sp.debug("entrance text configuration completed. result =>");
-		    daum.sp.debug(model);
-		    component.article= model;
-		    if(model.title != null) EMC.wc.onChangeApply(model);
-		}
-
-		var mocha_swf = "http://cafeimg.daum-img.net/cf_img4/mocha/editor/MochaEditor.swf?"+_mochaeditor_ver;
-		//var mocha_swf = "http://uie.daum.net/cube/mocha/editor/MochaEditor.swf?"+_mochaeditor_ver;
-		swfobject.embedSWF( mocha_swf, "mochaeditor_flash_content", "973", "120", "9.0.0", false, mocha_flashvars, mocha_params, {id:_mochaeditor_id} );
-		
-		var affogato_swf = "http://cafeimg.daum-img.net/cf_img4/affogato/typogenv2.swf?"+_affogato_ver;
-		swfobject.embedSWF( affogato_swf, "affogato_flash_content", "1", "1", "9.0.0", false, affogato_flashvars, affogato_params, {id:_affogato_id} );	 
-		
-		commonOnLoad();
-	}
+                
+	<script type="text/javascript">//<![CDATA[
+CAFEAPP.ui = { "SERVERNAME" : "cafe469.daum.net" };
 //]]>
 </script>
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/2/2009/dwr/engine-2.0.5.js"></script>
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/11/2009/dwr/dwrstub-compressed.js"></script>
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/48/2009/memo_reply.js"></script>
+<script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/9/2009/home_memo.js"></script>
 
+					
 
+	<div id="pv_HOMEBOARDGROUP_0" class="boardPanel1">
+			
+<div class="homeboard_layer">
+	<div class="list_title">
+		<div class="title">
+			<h3 class="list_txt_tit"><a href="/_c21_/recent_bbs_list?grpid=1Rrvk&amp;fldid=_rec" onclick="caller(this.href);return false;" title="최신글 보기">최신글 보기</a></h3>
+		</div>
+		<span class="more_tit"><a href="/_c21_/recent_bbs_list?grpid=1Rrvk&amp;fldid=_rec" onclick="caller(this.href);return false;" class="more"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="15" height="15" alt="더보기" class="more_img" /><span>더보기</span></a><span class="arrowR">▶</span></span>
+	</div>
 
+ 	 			<div class="list_bg">
+		<div class="list_bg_in">
+		<div class="home_bbsListBox"><div class="home_bbsListInBox">
+					<table class="home_bbsList">
+											<tr>
+					<td class="subject">
+											<strong>ㆍ</strong>&nbsp;<a href="/_c21_/recent_bbs_read?grpid=1Rrvk&amp;fldid=MY0K&amp;contentval=00006zzzzzzzzzzzzzzzzzzzzzzzzz&amp;datanum=6&amp;regdt=20130416133249" onclick="caller(this.href);return false;" title="1234">1234</a>
+						<img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="8" height="12" alt="새글" class="icon_new" />																						</td>
+										<td class="nick " nowrap="nowrap"><a href="#" onclick="showSideView(this, '3pwY4gDWPmY0', '', '\uC624\uB8E1\uB3D9\uC131\uB2F9');return false;" title="오룡동성당">오룡동성당</a> </td>
+										<td class="txt_sub count num" nowrap="nowrap"> 0</td>
+					<td class="txt_sub date num" nowrap="nowrap"> 13:32</td>
+				</tr>
+															<tr>
+					<td class="subject">
+											<strong>ㆍ</strong>&nbsp;<a href="/_c21_/recent_bbs_read?grpid=1Rrvk&amp;fldid=MY0L&amp;contentval=00002zzzzzzzzzzzzzzzzzzzzzzzzz&amp;datanum=2&amp;regdt=20130416102428" onclick="caller(this.href);return false;" title="aaa">aaa</a>
+						<img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="8" height="12" alt="새글" class="icon_new" />																						</td>
+										<td class="nick " nowrap="nowrap"><a href="#" onclick="showSideView(this, '3pwY4gDWPmY0', '', '\uC624\uB8E1\uB3D9\uC131\uB2F9');return false;" title="오룡동성당">오룡동성당</a> </td>
+										<td class="txt_sub count num" nowrap="nowrap"> 1</td>
+					<td class="txt_sub date num" nowrap="nowrap"> 10:24</td>
+				</tr>
+															<tr>
+					<td class="subject">
+											<strong>ㆍ</strong>&nbsp;<a href="/_c21_/recent_bbs_read?grpid=1Rrvk&amp;fldid=MY0L&amp;contentval=00001zzzzzzzzzzzzzzzzzzzzzzzzz&amp;datanum=1&amp;regdt=20130415194938" onclick="caller(this.href);return false;" title="test">test</a>
+						<img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="8" height="12" alt="새글" class="icon_new" />																						</td>
+										<td class="nick " nowrap="nowrap"><a href="#" onclick="showSideView(this, '3pwY4gDWPmY0', '', '\uC624\uB8E1\uB3D9\uC131\uB2F9');return false;" title="오룡동성당">오룡동성당</a> </td>
+										<td class="txt_sub count num" nowrap="nowrap"> 0</td>
+					<td class="txt_sub date num" nowrap="nowrap"> 13.04.15</td>
+				</tr>
+															<tr>
+					<td class="subject">
+											<strong>ㆍ</strong>&nbsp;<a href="/_c21_/recent_bbs_read?grpid=1Rrvk&amp;fldid=MY0K&amp;contentval=00005zzzzzzzzzzzzzzzzzzzzzzzzz&amp;datanum=5&amp;regdt=20130414102933" onclick="caller(this.href);return false;" title="tttt">tttt</a>
+																												</td>
+										<td class="nick " nowrap="nowrap"><a href="#" onclick="showSideView(this, '3pwY4gDWPmY0', '', '\uC624\uB8E1\uB3D9\uC131\uB2F9');return false;" title="오룡동성당">오룡동성당</a> </td>
+										<td class="txt_sub count num" nowrap="nowrap"> 0</td>
+					<td class="txt_sub date num" nowrap="nowrap"> 13.04.14</td>
+				</tr>
+															<tr>
+					<td class="subject">
+											<strong>ㆍ</strong>&nbsp;<a href="/_c21_/recent_bbs_read?grpid=1Rrvk&amp;fldid=MY0K&amp;contentval=00004zzzzzzzzzzzzzzzzzzzzzzzzz&amp;datanum=4&amp;regdt=20130414083259" onclick="caller(this.href);return false;" title="xxxxx">xxxxx</a>
+																												</td>
+										<td class="nick " nowrap="nowrap"><a href="#" onclick="showSideView(this, '3pwY4gDWPmY0', '', '\uC624\uB8E1\uB3D9\uC131\uB2F9');return false;" title="오룡동성당">오룡동성당</a> </td>
+										<td class="txt_sub count num" nowrap="nowrap"> 0</td>
+					<td class="txt_sub date num" nowrap="nowrap"> 13.04.14</td>
+				</tr>
+															<tr>
+					<td class="subject">
+											<strong>ㆍ</strong>&nbsp;<a href="/_c21_/recent_bbs_read?grpid=1Rrvk&amp;fldid=MY0K&amp;contentval=00002zzzzzzzzzzzzzzzzzzzzzzzzz&amp;datanum=2&amp;regdt=20130403140918" onclick="caller(this.href);return false;" title="&#53580;&#49828;&#53944;">테스트</a>
+																												</td>
+										<td class="nick " nowrap="nowrap"><a href="#" onclick="showSideView(this, '3pwY4gDWPmY0', '', '\uC624\uB8E1\uB3D9\uC131\uB2F9');return false;" title="오룡동성당">오룡동성당</a> </td>
+										<td class="txt_sub count num" nowrap="nowrap"> 0</td>
+					<td class="txt_sub date num" nowrap="nowrap"> 13.04.03</td>
+				</tr>
+															<tr>
+					<td class="subject">
+											<strong>ㆍ</strong>&nbsp;<a href="/_c21_/recent_bbs_read?grpid=1Rrvk&amp;fldid=MY0K&amp;contentval=00001zzzzzzzzzzzzzzzzzzzzzzzzz&amp;datanum=1&amp;regdt=20130403134215" onclick="caller(this.href);return false;" title="&#12609;&#12615;&#12596;&#12601;&#12615;&#12596;">ㅁㅇㄴㄹㅇㄴ</a>
+																												</td>
+										<td class="nick " nowrap="nowrap"><a href="#" onclick="showSideView(this, '3pwY4gDWPmY0', '', '\uC624\uB8E1\uB3D9\uC131\uB2F9');return false;" title="오룡동성당">오룡동성당</a> </td>
+										<td class="txt_sub count num" nowrap="nowrap"> 0</td>
+					<td class="txt_sub date num" nowrap="nowrap"> 13.04.03</td>
+				</tr>
+															<tr><td colspan="4"  >
+											&nbsp;
+									</td></tr>
+															<tr><td colspan="4"  >
+											&nbsp;
+									</td></tr>
+															<tr><td colspan="4"  >
+											&nbsp;
+									</td></tr>
+															<tr><td colspan="4"  >
+											&nbsp;
+									</td></tr>
+															<tr><td colspan="4"   class="last" >
+											&nbsp;
+									</td></tr>
+										</table><!-- end home_bbsList -->
+				</div></div><!-- end home_bbsListBox -->
+		</div><!-- end list_bg_in -->
+		</div><!-- end list_bg -->
 
-1234567
-
-<!-- ////////////////////////////////////////////////////////////////////////////-->
-
-<!-- ////////////////////////////////////////////////////////////////////////////-->
-	<script type="text/javascript">
-	//<![CDATA[
-	document.write('<iframe src="about:blank" width="0" height="0" frameborder="0" scrolling="no" name="ifr_korClick" id="ifr_korClick"></iframe>');
+		<div class="list_bgB"><div class="list_bgB_inL">&nbsp;</div><div class="list_bgB_inR">&nbsp;</div></div>
+	</div>		</div><!-- end boardPanel1 -->
 	
-	function cafeDecoActionPV(item) {
-		var service = "cafe";
-		var ref = encodeURIComponent(document.referrer);
-		var loc = encodeURIComponent(document.location);
-		var tit = encodeURIComponent(document.title);
-		//var domain = document.location.href.match(/cafe[0-9]{2,3}/g) + ".daum.net";
-		var domain = "cafe469.daum.net";
-		
-		ifr_korClick.location.href='http://'+ domain +'/cafeservice_pv.html?service='+service+'&ref='+ref+'&loc='+loc+'&tit='+tit+'&v='+new Date().getTime();
-		
-		daum.sp.debug('cafe korean click => ', item);
-	}
+
+					
+
+	<div id="pv_HOMEBOARDGROUP_1" class="boardPanel2">
+			
+				
+				<div id="pv_HOMEBOARDGROUP_1_1" class="outBoxL ">
+			
+<div class="homeboard_layer">
+	<div class="list_title">
+		<div class="title">
+			<h3 class="list_txt_tit"><a href="/_c21_/movie_bbs_list?grpid=1Rrvk" onclick="caller(this.href);return false;" title="동영상 보기">동영상 보기</a></h3>
+		</div>
+		<span class="more_tit"><a href="/_c21_/movie_bbs_list?grpid=1Rrvk" onclick="caller(this.href);return false;" class="more"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="15" height="15" alt="더보기" class="more_img" /><span>더보기</span></a><span class="arrowR">▶</span></span>
+	</div>
+
+ 	 			<div class="list_bg">
+		<div class="list_bg_in">
+		<div class="thumbList  small_thumb ">
+			<ul class="thumb movie">
+							<li>
+					<dl>
+											<dt><a href="/_c21_/movie_bbs_read?grpid=1Rrvk&amp;fldid=MY0K&amp;contentval=00004zzzzzzzzzzzzzzzzzzzzzzzzz" onclick="caller(this.href);return false;"><img src="http://i1.tvpot.daumcdn.net/svc/image/U03/tvpot_thumb/ku7s-AZuJgQ$/thumb.jpg"  width="80" height="60"  alt="" /><img src="http://i1.daumcdn.net/cafeimg/cf_img4/img/icon_play.gif" width="12" height="13" alt="동영상" class="icon_movie" /></a><br /></dt>
+										</dl>
+				</li>
+							<li>
+					<dl>
+											<dt><div class="blank_thumb">&nbsp;</div></dt>
+										</dl>
+				</li>
+							<li>
+					<dl>
+											<dt><div class="blank_thumb">&nbsp;</div></dt>
+										</dl>
+				</li>
+							<li>
+					<dl>
+											<dt><div class="blank_thumb">&nbsp;</div></dt>
+										</dl>
+				</li>
+							<li>
+					<dl>
+											<dt><div class="blank_thumb">&nbsp;</div></dt>
+										</dl>
+				</li>
+							<li>
+					<dl>
+											<dt><div class="blank_thumb">&nbsp;</div></dt>
+										</dl>
+				</li>
+							<li>
+					<dl>
+											<dt><div class="blank_thumb">&nbsp;</div></dt>
+										</dl>
+				</li>
+							<li>
+					<dl>
+											<dt><div class="blank_thumb">&nbsp;</div></dt>
+										</dl>
+				</li>
+						</ul>
+		</div><!-- end thumbList --><div class="cl">&nbsp;</div>
+		</div><!-- end list_bg_in -->
+		</div><!-- end list_bg -->
+		<div class="list_bgB"><div class="list_bgB_inL">&nbsp;</div><div class="list_bgB_inR">&nbsp;</div></div>
+
+		</div>		</div><!-- end outBoxL -->
+					
+				
+				<div id="pv_HOMEBOARDGROUP_1_2" class="outBoxR ">
+			
+<div class="homeboard_layer">
+	<div class="list_title">
+		<div class="title">
+			<h3 class="list_txt_tit"><a href="/_c21_/image_bbs_list?grpid=1Rrvk" onclick="caller(this.href);return false;" title="이미지 보기">이미지 보기</a></h3>
+		</div>
+		<span class="more_tit"><a href="/_c21_/image_bbs_list?grpid=1Rrvk" onclick="caller(this.href);return false;" class="more"><img src="http://i1.daumcdn.net/cafeimg/cf_img2/img_blank2.gif" width="15" height="15" alt="더보기" class="more_img" /><span>더보기</span></a><span class="arrowR">▶</span></span>
+	</div>
+
+ 	 			<div class="list_bg">
+		<div class="list_bg_in">
+		<div class="thumbList thumb">
+			<ul  class="small_thumb" >
+								<li>
+					<dl>
+												<dt>
+																								<a href="/_c21_/image_bbs_read?grpid=1Rrvk&amp;fldid=MY0L&amp;contentval=00002zzzzzzzzzzzzzzzzzzzzzzzzz" onclick="caller(this.href);return false;"><img src="http://cfile288.uf.daum.net/C80x80/11254636516CA805086585" alt=""  /></a><br />
+																					</dt>
+											</dl>
+				</li>
+								<li>
+					<dl>
+												<dt>
+																								<a href="/_c21_/image_bbs_read?grpid=1Rrvk&amp;fldid=MY0L&amp;contentval=00001zzzzzzzzzzzzzzzzzzzzzzzzz" onclick="caller(this.href);return false;"><img src="http://cfile255.uf.daum.net/C80x80/1436F148516BDB2E21B036" alt=""  /></a><br />
+																					</dt>
+											</dl>
+				</li>
+								<li>
+					<dl>
+												<dt><div class="blank_thumb">&nbsp;</div></dt>
+											</dl>
+				</li>
+								<li>
+					<dl>
+												<dt><div class="blank_thumb">&nbsp;</div></dt>
+											</dl>
+				</li>
+								<li>
+					<dl>
+												<dt><div class="blank_thumb">&nbsp;</div></dt>
+											</dl>
+				</li>
+								<li>
+					<dl>
+												<dt><div class="blank_thumb">&nbsp;</div></dt>
+											</dl>
+				</li>
+								<li>
+					<dl>
+												<dt><div class="blank_thumb">&nbsp;</div></dt>
+											</dl>
+				</li>
+								<li>
+					<dl>
+												<dt><div class="blank_thumb">&nbsp;</div></dt>
+											</dl>
+				</li>
+							</ul>
+
+		</div><!-- end thumbList --><div class="cl">&nbsp;</div>
+		</div><!-- end list_bg_in -->
+		</div><!-- end list_bg -->
+		<div class="list_bgB"><div class="list_bgB_inL">&nbsp;</div><div class="list_bgB_inR">&nbsp;</div></div>
+
+
+	</div>		</div><!-- end outBoxR -->
+				</div><!-- end boardPanel2 -->	
+	
+                
+				                
+                <div id="sidebar2"> 
+                    <div id="component1" class="componentBox">
+</div><!-- end componentBox -->
+                    <div id="component2" class="componentBox">
+</div><!-- end componentBox -->                    <div id="component3" class="componentBox">
+</div><!-- end componentBox -->
+                    
+                                        	<div id="component4" class="componentBox">
+
+
+</div><!-- end componentBox -->
+                                    </div><!-- end sidebar2 -->             
+            </div><!-- end primaryContent -->
+            
+                    </div><!-- end content -->
+                
+    </div><!--  end container -->
+    	<script charset='UTF-8' type='text/javascript' src='http://d1.daumcdn.net/tiara/tracker/tiara.min.js'></script>
+	<script type='text/javascript'>
+	//<![CDATA[
+	    var __pageTracker = {};
+	    if (typeof __Tiara != 'undefined' && typeof __Tiara.__getTracker != 'undefined') { 
+	        __pageTracker = __Tiara.__getTracker();     
+	    } else {         
+	        __pageTracker.__trackPageview = function() {};     
+	        __pageTracker.__addParam = function() {};
+	    }
+	    window.setTimeout('try { __pageTracker.__trackPageview(); } catch(e) {}', 1); 
 	//]]>
 	</script>
+	
+	<script type="text/javascript">
+	//<![CDATA[
+	var isIE = navigator.userAgent.indexOf("MSIE") != -1;
+	      if(isIE && ((CAFEAPP.SUB_WIDTH_TYPE == "flexibled2_1") || (CAFEAPP.SUB_WIDTH_TYPE == "flexibled3_1") || (CAFEAPP.SUB_WIDTH_TYPE == "flexibled3_3"))){             
+	         window.setTimeout('resizeMinWidthWrap()',250);                   
+	      }   
+	//]]>
+	</script>
+	<div id="noMemberLayer" class="p11" style="display: none;">
+		카페에 가입되지 않은<br />회원입니다.
+	</div>
+	<div class="cl">&nbsp;</div>
+	<div id="footer" class="line"><div class="footer_bg">
+		<p class="copyright1">
+			<a href="http://www.daum.net/doc/info.html" target="_blank">서비스 약관/정책</a> <span class="bar2">|</span>
+			<a href="http://cs.daum.net/redbell/right.html" target="_blank">권리침해신고</a> <span class="bar2">|</span>
+			<a href="http://cafe.daum.net/agreement/agreement_2010.html" target="_blank">이용약관</a> <span class="bar2">|</span>
+			<a href="http://cs.daum.net/daumfaq/top.jsp?SITE_ID=36" target="_blank">카페 고객센터</a> <span class="bar2">|</span>
+			<a href="http://blog.daum.net/cafe_notice/1124" target="_blank">검색비공개 요청</a>
+					</p>
+		<p class="copyright2">Copyright (c) <a href="http://info.daum.net/" target="_blank">Daum Communications Corp.</a> All rights reserved.</p>	
+	</div></div><!-- end footer -->
+		<div id="favorTipLayer" class="p11" style="display: none;">매주 월요일 기준으로<br />전주 월요일에서 일요일까지의<br />인기글이 보여집니다.</div>
+		<img src="https://logins.daum.net/accounts/auth.gif" width="0" height="0" alt="" id="daumtrans" class="daum_auth" />
+	
+	
+		
+	<script type="text/javascript">//<![CDATA[
+	    try {
+	        if (parent.proxy) {
+	            var homeobj = document.getElementById("homeurl");
+	            homeobj.href = parent.proxy+"/5DragonAdmin";
+	        }
+	    } catch (e) {
+	    }
+	    	    document.domain='daum.net';
+	    	    var titleStr = "\uC624\uB8E1\uB3D9\uC131\uB2F9\uAD00\uB9AC\uC6A9 - Daum 카페";
+	    try {
+	        if (top != null) {
+	            top.document.title = titleStr;
+	        } else {
+	            document.title = titleStr;
+	        }
+	    } catch(e) {}
+	    	    try {
+	        if (parent.proxy) {
+	            var topobj = document.getElementById("upper");
+	            topobj.style.display = 'none';
+	        }
+	    } catch (e) {
+	    }
+	    try {
+		    //뚜껑 카페
+		    if (parent.proxy) {
+		        var leftobj = document.getElementById("leftmenu");
+		        if(parent.lmargin!=null)
+		            leftobj.style.left = parent.lmargin;
+		        else
+		            leftobj.style.left = 25;
+		    
+		        if(parent.lmargin!=null)
+		            document.body.leftMargin = parent.lmargin;
+		        else
+		            document.body.leftMargin = 25;
+		        if(parent.rmargin!=null)
+		            document.body.rightMargin = parent.rmargin;
+		        else
+		            document.body.rightMargin = 9;
+		    }
+	    } catch (e) {
+	    }
+	// ]]>
+	</script>
+	
+	    <!-- 사업자 정보 -->
+    
+</div><!-- end wrap -->
+<div id="dialogs"></div>
+<div id="menus"></div>
+<div id="tips"></div>
+
+
+	
+<script type="text/javascript">//<![CDATA[
+(function(){
+	var w=document.getElementById('sideAd');
+	if (w) { w.innerHTML = '<iframe src="http://amsv2.daum.net/ad/adview?secid=00685" width="170" height="128" border="0" frameborder="0" scrolling="no" title="광고"></iframe>'; }
+	if (typeof TouchUI !== 'undefined') TouchUI.scrollBoxSetup();
+})();
+//]]></script>
+<script type="text/javascript">
+//<![CDATA[
+document.write('<iframe src="about:blank" width="0" height="0" frameborder="0" scrolling="no" name="ifr_korClick" id="ifr_korClick"></iframe>');
+ifr_korClick.location.href='http://cafe.daum.net/_pageview/home.html?'+new Date().getTime();
+
+function cafeActionPV(target) {
+	var service = "cafe";
+	var ref = encodeURIComponent(document.referrer);
+	var loc = encodeURIComponent(document.location);
+	var tit = encodeURIComponent(document.title);
+	var domain = "cafe469.daum.net";
+	
+	ifr_korClick.location.href='http://'+ domain +'/cafeservice_pv.html?service='+service+'&ref='+ref+'&loc='+loc+'&tit='+tit+'&v='+new Date().getTime();
+}
+//]]>
+</script>
 </body>
 </html>
