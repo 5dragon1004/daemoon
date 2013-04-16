@@ -22,6 +22,16 @@ document.domain = "daum.net";
 </script>            
 
 <!-- 카페 대문 -->
+<script type="text/javascript">// <![CDATA[
+CAFEAPP_ENTRANCE["ISPREVIEW"]= false; //
+// ]]>
+</script>
+
+			
+<script type="text/javascript">// <![CDATA[
+		CAFEAPP_ENTRANCE["flashversion"]= '2012020601';
+		// ]]>
+</script>
 
 <div id="photo_entrace_div">
 	<div class="not_flash_player">
@@ -51,6 +61,8 @@ CAFEAPP_ENTRANCE["photo"]= {
 	height : "295"
 };
 
+var photo_entrance_array;
+var photo_entrance_num;
 
 try{
 	EntrancePhotoViewerRender();
