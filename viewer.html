@@ -8,10 +8,6 @@
 <script type="text/javascript">
 //<![CDATA[
 document.domain ="daum.net";
-alert(document.domain);
-alert(imageArr);
-alert(length);
-alert(num);
 var imageArr = opener.photo_entrance_array;
 var length = opener.photo_entrance_array.length;
 var num = opener.photo_entrance_num;
@@ -21,6 +17,9 @@ var oldHeight = "";
 
 function onLoad()
 {
+alert(opener.photo_entrance_array);
+alert(opener.photo_entrance_array.length);
+alert(opener.photo_entrance_num);
   var image = document.getElementById('photoview');
 	var iWidth = image.width + 52;
 	var iHeight = image.height + 141 +10;
