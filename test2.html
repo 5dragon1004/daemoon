@@ -12,20 +12,22 @@
 
 <script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/73/2009/member_person_module.js"></script>
 <script type="text/javascript">//<![CDATA[
+function showSideView(curObj, userid, planetUserid, targetNick, isAdmin, isGuest) {
+			var isMine = ("BQa2uyvYYuY0" == userid) ? true : false;
+		var sideView = new SideView('nameContextMenu', curObj, userid, planetUserid, '\uC774\uC2B9\uD658[\uC544\uC624\uC2A4\uB529]', targetNick, '\uCC9C\uC8FC\uAD50 \uCC9C\uC548\uC624\uB8E1\uB3D9\uC131\uB2F9', '', '40', isAdmin, isGuest, isMine);
+		sideView.showLayer();
+	}
+
+function showGroupSideView(curObj, mgrpid, userid, planetUserid, targetNick) {
+			var sideView = new SideView('nameContextMenu', curObj, userid, planetUserid, '\uC774\uC2B9\uD658[\uC544\uC624\uC2A4\uB529]', targetNick, '1RYXT', mgrpid, '\uCC9C\uC8FC\uAD50 \uCC9C\uC548\uC624\uB8E1\uB3D9\uC131\uB2F9', '', '40');
+		sideView.showLayer();
+	}
 document.domain = "daum.net";
 
 
 //]]>
 </script><script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/3/2009/activeX.js"></script>
-<script type="text/javascript">//<![CDATA[
-CAFEAPP.ui = {
-	SCROLL_TO_MEMO : false,
-	ISPREVIEW : false,
-	MEMO_ENTR_ISWRITEPERM : "",
-	SERVERNAME : "cafe468.daum.net"	
-};
-//]]>
-</script>
+
 <script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/54/2009/home.js"></script>
 <script type="text/javascript" src="http://s1.daumcdn.net/cafecj/js/68/2009/entrance_viewer.js"></script>
 </head>
