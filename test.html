@@ -501,79 +501,7 @@
     </div>
     <!-- end div#entranceEditor -->
 </div>
-        <div class="entranceEditorFooter">
-        	<div class="eefoot_bg">&nbsp;</div>
-        	<div class="entranceEditorFooterControll">
-		        		            <a href="#set_background" class="set_ctr set_background" onclick="javascript:Views._$('cube.view.entrance.EntranceBackgroundView').render();return false;">배경설정</a>
-		            <span class="divline"></span>
-		            <a href="#set_text" id="TextPupupBtn" class="set_ctr set_text" onclick="javascript:Views._$('cube.view.entrance.EntranceTextView').render();return false;">대문글 추가 </a>
-		
-		
-		            <div id="EntranceTyepStackOption">
-		                <div class="eto_item">
-		                    <strong class="set_ctr">
-								배열
-		                    </strong>
-		                    <div class="eto_item_array">
-		                        <select id="ArrayWidthCounter" onchange="EMC.dc.onChangeWidthCount()">
-		                            <option value="3">3</option>
-		                            <option value="4">4</option>
-		                            <option value="5" selected="true">5</option>
-		                            <option value="6">6</option>
-		                        </select>
-		                        <span class="eto_contx set_ctr">
-									X
-		                        </span>
-		                        <select id="ArrayHeightCounter" onchange="EMC.dc.onChangeHeightCount()">
-		                            <option value="1">1</option>
-		                            <option value="2" selected="true">2</option>
-		                            <option value="3">3</option>
-		                        </select>
-		                    </div>          
-		                </div> 
-		                <span class="divline"></span>
-		                <div class="eto_item">
-		                    <strong class="set_ctr">
-								 간격 
-		                    </strong>
-		                    <input type="text" value="15" id="ArraySpaceCounter" class="text_input" onchange="cube.controller.entrance.EntranceDetailController.onChangeSpaceCount()" />
-		                    <button type="button" onclick="EMC.option.spaceCounterSlider.goLeft();" class="eto_slider_btn eto_slider_left"><span>왼쪽</span></button>
-		                    <div id="ArraySpaceCounterSlider" class="eto_slider" ></div>
-							<button type="button" onclick="EMC.option.spaceCounterSlider.goRight();" class="eto_slider_btn eto_slider_right"><span>오른쪽</span></button>
-		                </div>
-		                <span class="divline"></span>
-		                
-		                <div class="eto_item" >
-		                    <strong class="set_ctr">
-								모서리
-		                    </strong>                    
-		                    <input type="text" value="20" id="ArrayCornerCounter" class="text_input" />
-		                    <button type="button" onclick="EMC.option.cornerCounterSlider.goLeft();" class="eto_slider_btn eto_slider_left"><span>왼쪽</span></button>
-		                    <div id="ArrayCornerCounterSlider" class="eto_slider" ></div>
-							<button type="button" onclick="EMC.option.cornerCounterSlider.goRight();" class="eto_slider_btn eto_slider_right"><span>오른쪽</span></button>
-		                </div>                  
-		                <span class="divline"></span>
-		                
-		                <div class="eto_item" >
-		                    <strong class="set_ctr">
-								기울기
-		                    </strong>
-		                    <input type="text" value="0" id="ArraySlopeCounter" class="text_input" />
-		                    <button type="button" onclick="EMC.option.slopeCounterSlider.goLeft();" class="eto_slider_btn eto_slider_left"><span>왼쪽</span></button>
-		                    <div id="ArraySlopeCounterSlider" class="eto_slider" ></div>
-		                    <button type="button" onclick="EMC.option.slopeCounterSlider.goRight();" class="eto_slider_btn eto_slider_right"><span>오른쪽</span></button>
-		                </div>                  
-		                <span class="divline"></span>
-		                
-		                
-		                <div class="eto_item eto_set_border_line set_ctr">
-		                    <input type="checkbox" id="OutlineFlag" checked="checked" onclick="EMC.dc.onClickOutlineFlag()" /> 테두리 사용
-		                </div>              
-		            </div>        
-		
-		        
-        	</div> 
-        </div>  
+ 
 
 <!-- end div#entranceEditorWrap -->
 <form name="previewForm" method="post" action="" target="" class="hidden_form">
@@ -590,11 +518,254 @@
     <input name="height" type="hidden" value="" />
 </form>
 
+<script type="text/javascript">
+//<![CDATA[
+
+	//components
+	
+    daum.sp.include("cube.dao.DAOCalls");
+    daum.sp.include("cube.utility.DWRUtil");
+    daum.sp.include("cube.utility.ServerErrorHandler");
+
+	daum.sp.include("cube.view.entrance.EntranceDetailView");
+	daum.sp.include("cube.view.entrance.EntranceManagerView");
+	daum.sp.include("cube.view.entrance.EntranceWriteView");
+	daum.sp.include("cube.controller.entrance.EntranceManagerController");
+	daum.sp.include("cube.controller.entrance.EntranceDetailController");
+	daum.sp.include("cube.controller.entrance.EntranceWriteController");
+
+	//mocha, affogato
+	var _mochaeditor_id = "MochaEditor";
+	var _affogato_id = "AffogatoBase";
+
+	var _mochaeditor_ver = "2012020601";
+	var _mochaviewer_ver = "2012020601";
+	var _affogato_ver = "20091228";
+
+	function mochaeditor(){
+		return daum.$(_mochaeditor_id);
+	}
+	
+	function affogato(){
+		return daum.$(_affogato_id);
+	}
+
+	function setHeight(height){
+		mochaeditor().height = height + "px";
+	}
+
+	window.EMC = {};
+	EMC.mc = cube.controller.entrance.EntranceManagerController;
+	EMC.dc = cube.controller.entrance.EntranceDetailController;
+	EMC.wc = cube.controller.entrance.EntranceWriteController;
+	EMC.mv = cube.view.entrance.EntranceManagerView;
+	EMC.dv = cube.view.entrance.EntranceDetailView;
+	EMC.option = {};
+
+	window.ENTRANCEPANEL = { 
+		componentList: new Array( { article: {}, styleConfig:{ map: {} } } ), 
+		styleConfig: { map: { visible: true } } 
+	};
+
+	function initManager(){
+
+	    var entType= "slide_3d";
+	    switch (entType){
+	    	case "pie" : $("BtnEntranceTyepPie").onclick(); break;
+	    	case "frame" : $("BtnEntranceTyepStack").onclick(); break;
+	    	case "slide" : $("BtnEntranceTyepSlideCycle").onclick(); break;	    	
+  	
+	    	case "slide_3d" : $("BtnEntranceTyepSlideCylinder").onclick(); break;	    	
+	    	case "random" : $("BtnEntranceTyepSlideStack").onclick(); break;	    	
+	    	case "wide" : $("BtnEntranceTyepSlideWide").onclick(); break;	    	
+	    	default : $("BtnEntranceTyepPie").onclick();
+	    }
+
+		EMC.option["widthCounter"]= new cube.widget.SelectBox("ArrayWidthCounter");
+		EMC.option["heightCounter"]= new cube.widget.SelectBox("ArrayHeightCounter");
+		
+		
+		// 간격
+		EMC.option["spaceCounterSlider"]= new dhtmlxSlider("ArraySpaceCounterSlider", 60, null, null, 0, 90, 15, 5);
+		EMC.option["spaceCounterSlider"].linkTo('ArraySpaceCounter');
+		EMC.option["spaceCounterSlider"].init();
+		EMC.option["spaceCounterSlider"].onChangeFunc= cube.controller.entrance.EntranceDetailController.onChangeSpaceCount;
+	    EMC.option["spaceCounterSlider"].attachEvent("onChange", function(newValue, sliderObj){ 
+	    	this.onChangeFunc();
+	    });
+	    EMC.option["spaceCounterSlider"].goLeft= function(){
+	    	this.setValue(this.getValue()-this._step);
+	    	this.onChangeFunc();
+	    }
+	    EMC.option["spaceCounterSlider"].goRight= function(){
+	    	this.setValue(this.getValue()+this._step);
+	    	this.onChangeFunc();
+	    }
+		
+		// 모서리
+		EMC.option["cornerCounterSlider"]= new dhtmlxSlider("ArrayCornerCounterSlider", 60, null, null, 0, 90, 15, 5);
+		EMC.option["cornerCounterSlider"].linkTo('ArrayCornerCounter');
+		EMC.option["cornerCounterSlider"].init();
+		EMC.option["cornerCounterSlider"].onChangeFunc= cube.controller.entrance.EntranceDetailController.onChangeCornerCount;
+	    EMC.option["cornerCounterSlider"].attachEvent("onChange", function(newValue, sliderObj){ 
+	    	this.onChangeFunc();
+	    });
+	    EMC.option["cornerCounterSlider"].goLeft= EMC.option["spaceCounterSlider"].goLeft;
+	    EMC.option["cornerCounterSlider"].goRight= EMC.option["spaceCounterSlider"].goRight;
+		
+		// 기울기
+		EMC.option["slopeCounterSlider"]= new dhtmlxSlider("ArraySlopeCounterSlider", 60, null, null, -45, 45, 0, 5);
+		EMC.option["slopeCounterSlider"].linkTo('ArraySlopeCounter');
+		EMC.option["slopeCounterSlider"].init();
+		EMC.option["slopeCounterSlider"].onChangeFunc= cube.controller.entrance.EntranceDetailController.onChangeSlopeCount;
+	    EMC.option["slopeCounterSlider"].attachEvent("onChange", function(newValue, sliderObj){ 
+	    	this.onChangeFunc();
+	    });
+	    EMC.option["slopeCounterSlider"].goLeft= EMC.option["spaceCounterSlider"].goLeft;
+	    EMC.option["slopeCounterSlider"].goRight= EMC.option["spaceCounterSlider"].goRight;
+		
+		// 테두리 
+		EMC.option["checkBoxOutlineFlag"]= new cube.widget.CheckBox("OutlineFlag");	    
+
+		// 배경색 컬러 피커
+	    EMC.dc.backgroundColorSelectBox = new cube.widget.ColorSelectBox("EntBody_bgcolor", {
+	        defaultColor: "#ffffff",
+	        isAppend: true,
+	        callback: cube.controller.entrance.EntranceDetailController.onChangeBackgroundColor
+	    });
+
+		// 타이틀색 컬러 피커
+	    EMC.wc.titleFontColorBox = new cube.widget.ColorSelectBox("tcTitleFontColor", {
+	        defaultColor: "#ffffff",
+	        isAppend: true,
+	        callback: cube.controller.entrance.EntranceWriteController.onChangeFontColor
+	    });
+
+	    // 내용 컬러 피커
+	    EMC.wc.contentFontColorBox = new cube.widget.ColorSelectBox("tcContentFontColor", {
+	        defaultColor: "#ffffff",
+	        isAppend: true,
+	        callback: cube.controller.entrance.EntranceWriteController.onChangeContentFontColor
+	    });
+
+	    // 테두리 효과 컬러 피커
+	    EMC.wc.outlineFontColorBox = new cube.widget.ColorSelectBox("tcOutlineFontColor", {
+	        defaultColor: "#ffffff",
+	        isAppend: true,
+	        callback: cube.controller.entrance.EntranceWriteController.onChangeOutlineFontColor
+	    });   
+	}
+
+	function mocha_cmd_enable(){
+		//$("BtnEntranceApply").disabled="";
+		//$("BtnEntranceCancel").disabled="";
+		//$("BtnEntranceSave").disabled="";
+	}
+
+	function mocha_cmd_disable(){
+		//$("BtnEntranceApply").disabled="true";
+		//$("BtnEntranceCancel").disabled="true";
+		//$("BtnEntranceSave").disabled="true";
+	}
+
+	function mocha_cmd_callback(msg){
+	//	alert(msg);
+	//	mocha_cmd_enable();
+	}
+
+	var mocha_flashvars = {
+		coca_id:"CafeCubeCoca",
+		coca_sid:"sid",
+		coca_service:"cubeview",
+		service_interface:"cafe",
+
+		cafe_host:"cafe469.daum.net",
+		cafe_grpid:"1Rrvk",
+		cafe_key:"0",
+		cafe_layout:"2",
+		cafe_repository_key:"",
+		cafe_repository_subject:"",
+		template_type: "slide_3d",
+
+		mocha_viewer_version:_mochaviewer_ver};
+	
+	var mocha_params = {
+		allowNetworking:"all",
+		allowscriptaccess:"always",
+		salign:"tl",
+		scale:"noscale",
+		wmode:"transparent",
+		quality:"high"
+	};
+	
+	var affogato_flashvars = {
+			preview:false,
+			size:28,
+			color:"#6c9d31",
+			text:"Cafe Cube::카페 큐브",
+			stroke:false,
+			shadow:false,
+			reflection:false };
+	
+	var affogato_params = {
+			bgcolor:"#ffffff",
+			allowscriptaccess:"always",
+			salign:"tl",
+			scale:"noscale",
+			quality:"high",
+			base:"http://cafeimg.daum-img.net/cf_img4/affogato/"};
+
+	function main(){
+        cube.dao.DAOCalls.getInstance(); // instrument DAOs
+        cube.utility.DWRUtil.configure();
+        new cube.utility.ServerErrorHandler().install();
+
+		daum.sp.debug("entrance management main() start!");
+		initManager();
+		
+		var component = ENTRANCEPANEL.componentList[0];
+
+	    Views._$("cube.view.entrance.EntranceBackgroundView").isFlash = true;
+	    Views._$('cube.view.entrance.EntranceTextView').isFlash = true;
+	    
+		Views._$("cube.view.entrance.EntranceBackgroundView").onBeforeRender = function(){
+		    Views._$("cube.view.entrance.EntranceBackgroundView").setModel(component.styleConfig.map || {});
+		}
+
+		Views._$("cube.view.entrance.EntranceBackgroundView").callback = function(model){
+			daum.sp.debug("entrance background configuration completed. result =>");
+			daum.sp.debug(model);
+			if(model.bgcolor) EMC.dc.onChangeBackgroundColor(model);
+			if(model.configid) EMC.dc.onChangeSkin(model);
+		}
+
+		Views._$('cube.view.entrance.EntranceTextView').onBeforeRender = function(){
+		    Views._$('cube.view.entrance.EntranceTextView').setModel(component.article || {});
+		}
+
+		Views._$('cube.view.entrance.EntranceTextView').callback = function(model){
+		    daum.sp.debug("entrance text configuration completed. result =>");
+		    daum.sp.debug(model);
+		    component.article= model;
+		    if(model.title != null) EMC.wc.onChangeApply(model);
+		}
+
+		var mocha_swf = "http://cafeimg.daum-img.net/cf_img4/mocha/editor/MochaEditor.swf?"+_mochaeditor_ver;
+		//var mocha_swf = "http://uie.daum.net/cube/mocha/editor/MochaEditor.swf?"+_mochaeditor_ver;
+		swfobject.embedSWF( mocha_swf, "mochaeditor_flash_content", "973", "120", "9.0.0", false, mocha_flashvars, mocha_params, {id:_mochaeditor_id} );
+		
+		var affogato_swf = "http://cafeimg.daum-img.net/cf_img4/affogato/typogenv2.swf?"+_affogato_ver;
+		swfobject.embedSWF( affogato_swf, "affogato_flash_content", "1", "1", "9.0.0", false, affogato_flashvars, affogato_params, {id:_affogato_id} );	 
+		
+		commonOnLoad();
+	}
+//]]>
+</script>
 
 
 
 
-12345
+123456
 
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 
