@@ -13,14 +13,14 @@ document.domain = "daum.net";
 
 </head>
 <body>
-123456
+1234567
 
 <script type="text/javascript">//<![CDATA[
 	function getViewerLayout() {
 		var layoutNum = "2";
 		return layoutNum;
 	}
-	
+
 	function setViewerHeight(height, obj){
 		var flashObj = (!obj) ? document.getElementById('mocha_viewer') : document.getElementById(obj);
 		flashObj.height = height+"px";
@@ -30,11 +30,11 @@ document.domain = "daum.net";
 	     * getStyle function based on by PPK
 	     * http://www.quirksmode.org/dom/getstyles.html
 	     */
-	    	    	    function getStyle(e, cssProperty, mozCssProperty){           
+	    function getStyle(e, cssProperty, mozCssProperty){           
 	        var mozCssProperty = mozCssProperty || cssProperty
 	        return (e.currentStyle) ? e.currentStyle[cssProperty] : document.defaultView.getComputedStyle(e, null).getPropertyValue(mozCssProperty);  
 	    }
-		
+
 	    function rgb2hex(rgbstr){
 	        function toHex(n){
 	            if(n == null){
@@ -49,7 +49,7 @@ document.domain = "daum.net";
 	            n = Math.round(n);
 	            return "0123456789ABCDEF".charAt((n - n % 16) / 16) + "0123456789ABCDEF".charAt(n % 16);
 	        }
-	        
+
 	        var result = rgbstr.match(/^\s*rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*/);
 	        if(result == null || result.length != 4){
 	            return "#000000";
@@ -63,7 +63,7 @@ document.domain = "daum.net";
                 return color;
             }
         }
-		
+
 		window.getPageBackgroundColor = function(){
 		    var optStyleColor = "#ffffff";
             var color = (optStyleColor == "") ? getStyle(document.body, "backgroundColor", "background-color") : optStyleColor;
@@ -82,7 +82,7 @@ document.domain = "daum.net";
 	    }
         	    
     })(); 
-	
+
 	function getCafeHostForFlash() {
 		var node = "cafe469";
 		return node + ".daum.net";
@@ -92,8 +92,7 @@ document.domain = "daum.net";
 
 <!-- 카페 대문 -->
 
-				
-	<div id="photo_entrace_div">
+<div id="photo_entrace_div">
 	<div class="not_flash_player">
 		<a href="http://www.adobe.com/go/getflashplayer" target="_blank"><img src="http://i1.daumcdn.net/cafeimg/cf_img4/design/common/get_adobe_flash_player.png" height="39" width="158" alt="플래시 플레이어를 설치해 주세요." /></a>
 	</div>
@@ -129,7 +128,9 @@ try{
 }catch(e){}
 
 //]]>
-</script></div>
+</script>
+
+</div>
 
 	<!-- 카페 대문 끝 -->
 
@@ -146,7 +147,7 @@ function cafeActionPV(target) {
 	var loc = encodeURIComponent(document.location);
 	var tit = encodeURIComponent(document.title);
 	var domain = "cafe469.daum.net";
-	
+
 	ifr_korClick.location.href='http://'+ domain +'/cafeservice_pv.html?service='+service+'&ref='+ref+'&loc='+loc+'&tit='+tit+'&v='+new Date().getTime();
 }
 //]]>
