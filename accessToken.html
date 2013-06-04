@@ -11,17 +11,17 @@
 				action: "https://apis.daum.net/oauth/accessToken",
 				method: "GET",
 				parameters: {
-					oauth_consumer_key: "12ccdd1d-bd04-4885-85ac-262961d4669c",
+					oauth_consumer_key: "e7ef0075-2b9c-435f-b6b8-2bf8d6da518a",
 					oauth_signature_method: "HMAC-SHA1",
 					oauth_token: document.getElementById("request-token").value,
 					oauth_verifier: document.getElementById("verifier").value,
-					oauth_callback: "http://blog.daum.net/bt088"
+					oauth_callback: "http://5dragon1004.github.io/daemoon"
 				}
 			};
 
 			OAuth.setTimestampAndNonce(message);
 			OAuth.SignatureMethod.sign(message, {
-				consumerSecret: "l3fx8q3TNSgZuhcf4J4ReuVf6vMNwIZIkxUkSgrf2JSF.Bq4zsZ_vA00",
+				consumerSecret: "kTPVuHKV-6M3F1BdgcBJAGzxP1AF-if9GO.64JlLUpwS9M6V-994tg00",
 				tokenSecret : document.getElementById("request-secret").value
 				});
 			
@@ -48,6 +48,6 @@
 	request-secret : <input type="text" id="request-secret" /><br>
 	verifier : <input type="text" id="verifier" /><br>
 	<br>
-	<button onclick="getAccessToken()"> Get Request Token </button>
+	<button onclick="getAccessToken()"> Get Request Token2 </button>
 </body>
 </html>
