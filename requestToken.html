@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title> Get Request Token</title>
+	<script type="text/javascript" src="js/sha1.js"></script>
+	<script type="text/javascript" src="js/oauth.js"></script>
+	<script type="text/javascript" >
+		
+		function getRequestToken() {
+			
+			var message = {
+				action: "https://apis.daum.net/oauth/requestToken",
+				method: "GET",
+				parameters: {
+					oauth_consumer_key: "5a3e3f63-cc26-4c2a-893f-22b18c31d32b",
+					oauth_signature_method: "HMAC-SHA1",
+					oauth_callback: "http://localhost:7001/5dragon1004"
+				}
+			};
+
+			OAuth.setTimestampAndNonce(message);
+			OAuth.SignatureMethod.sign(message, {
+				consumerSecret: "hxOmNOEIDbme4-kojiAT3lTILZTSCCH.lR2LTdXNkVixP5XXdHLzwg00",
+				tokenSecret : ""
+				});
+			
+			var params = [];
+
+			for(var name in message.parameters) {
+				params.push(name + "=" + 
+				encodeURIComponent(message.parameters[name]));
+
+				//http://apis.daum.net/oauth/requestToeken?name=value&name=value
+			}
+
+			var url = message.action + "?" + params.join("&");
+
+			window.location = url;
+		}
+
+
+	</script>		
+
+</head>
+<body>
+	<button onclick="getRequestToken()"> Get Request Token </button>
+</body>
+</html>
