@@ -8,20 +8,20 @@
 		function getResource() {
 			
 			var message = {
-				action: "http://apis.daum.net/blog/category/list.do",
+				action: "hhttps://apis.daum.net/cafe/articles/5dragon1004/KMDH.xml",
 				method: "GET",
 				parameters: {
-					oauth_consumer_key: "12ccdd1d-bd04-4885-85ac-262961d4669c",
+					oauth_consumer_key: "e7ef0075-2b9c-435f-b6b8-2bf8d6da518a",
 					oauth_signature_method: "HMAC-SHA1",
-					oauth_token: "22dee5a9-5de1-4d9b-9092-98a4544d0f3c",
+					oauth_token: "093477a3-ab16-4465-936c-858cd57a4b33",
 					blogName: "bt088"
 				}
 			};
 
 			OAuth.setTimestampAndNonce(message);
 			OAuth.SignatureMethod.sign(message, {
-				consumerSecret: "l3fx8q3TNSgZuhcf4J4ReuVf6vMNwIZIkxUkSgrf2JSF.Bq4zsZ_vA00",
-				tokenSecret : "JHCIDmi83h3J2L491xlTrpFzvSwndCspqhZedR9N7GB7.MXFXY844A00"
+				consumerSecret: "kTPVuHKV-6M3F1BdgcBJAGzxP1AF-if9GO.64JlLUpwS9M6V-994tg00",
+				tokenSecret : "5YQnF-walzEZng3dRnyBEoKrcNQzQlQCAxfFHMsUxGqbkJoW.-uIYg00"
 				});
 			
 			var params = [];
