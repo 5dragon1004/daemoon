@@ -1,50 +1,74 @@
-<div id="SimpleScaleJS1374647158065" style="width:700px;height:300px;"></div>
+<script type="text/javascript" src="swfobject.js"></script>
 <script type="text/javascript" src="SimpleScale.js"></script>
 <script type="text/javascript">
-	(function() {
-		var err;
-		try{
-			$.slideshowBoxEmbedCanvas.init({
-				appendToID:"SimpleScaleJS1374647158065",
-				domainKeys:"",
-				source:"https://picasaweb.google.com/data/feed/base/user/112981794336081483787/albumid/5865836393885714337?alt=rss&kind=photo&hl=en_US",
-				audioFile:"",
-				audioFileAlt:"",
-				audioPlayerIcon:"speaker",
-				audioPlayerColor:"#FFFFFF",
-				loopAudio:true,
-				audioPlayMode:"synchronizeWithSlideshow",
-				audioPlayerOn:"",
-				audioPlayerOff:"",
-				fontName:"",
-				fontSize:11,
-				bold:false,
-				italic:false,
-				textTopOffset:0,
-				width:700,
-				height:300,				
-				autoSlideShow:true,
-				slideShowSpeed:6,
-				backgroundVisible:false,
-				backgroundColor:"#1C1C1C",
-				backgroundImage:"",
-				scaleBackground:true,
-				loadOriginalImages:false,
-				autoHideControls:false,
-				controlsHideSpeed:2,
-				controlBarAlpha:0.8,
-				controlBarPrimaryColor:"#333333",
-				controlBarSecondaryColor:"#CCCCCC",
-				navigationControls:true,
-				slideShowControls:true,
-				fullScreenButton:true,
-				showImageIndex:true,
-				showImageInfos:true,
-				scaleMode:"scale",
-				leftRightMargin:10,
-				topBottomMargin:0,
-				preloaderPosition:"centered"
-			});
-		}catch(err){}
-	})();
+	swfobject.registerObject("SimpleScale1374647562894", "9.0.115", "", function(e) {
+		if (e.success==false){
+			var err;
+			try{
+				$("#SimpleScale1374647562894").hide();
+				$.slideshowBoxEmbedCanvas.init({
+					appendToID:"SimpleScaleJS1374647562894",
+					domainKeys:"",
+					source:"https://picasaweb.google.com/data/feed/base/user/112981794336081483787/albumid/5865836393885714337?alt=rss&kind=photo&hl=en_US",
+					audioFile:"",
+					audioFileAlt:"",
+					audioPlayerIcon:"speaker",
+					audioPlayerColor:"#FFFFFF",
+					loopAudio:false,
+					audioPlayMode:"audioOff",
+					audioPlayerOn:"",
+					audioPlayerOff:"",
+					fontName:"",
+					fontSize:11,
+					bold:false,
+					italic:false,
+					textTopOffset:0,
+					width:700,
+					height:300,					
+					autoSlideShow:true,
+					slideShowSpeed:6,
+					backgroundVisible:false,
+					backgroundColor:"#666666",
+					backgroundImage:"",
+					scaleBackground:false,
+					loadOriginalImages:false,
+					autoHideControls:false,
+					controlsHideSpeed:2,
+					controlBarAlpha:0.7,
+					controlBarPrimaryColor:"#FFFFFF",
+					controlBarSecondaryColor:"#000000",
+					navigationControls:true,
+					slideShowControls:false,
+					fullScreenButton:false,
+					showImageIndex:false,
+					showImageInfos:false,
+					scaleMode:"scale",
+					leftRightMargin:10,
+					topBottomMargin:0,
+					preloaderPosition:"centered"
+				});
+			}catch(err){}
+		}
+	});
 </script>
+<div id="SimpleScaleJS1374647562894" style="width:700px;height:300px;">
+	<object id="SimpleScale1374647562894" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="700" height="300">
+		<param name="movie" value="SimpleScale.swf">
+		<param name="allowFullScreen" value="true">
+		<param name="allowScriptAccess" value="sameDomain">
+		<param name="bgcolor" value="#1C1C1C">
+		<param name="wmode" value="transparent">
+		<param name="flashvars" value="domainKeys=&source=https%3A//picasaweb.google.com/data/feed/base/user/112981794336081483787/albumid/5865836393885714337%3Falt%3Drss%26kind%3Dphoto%26hl%3Den_US&audioFile=&audioPlayerIcon=speaker&audioPlayerColor=0xFFFFFF&loopAudio=true&audioPlayMode=audioOff&autoSlideShow=true&slideShowSpeed=6&backgroundVisible=false&backgroundColor=0x666666&backgroundImage=&scaleBackground=true&loadOriginalImages=false&autoHideControls=false&controlsHideSpeed=2&controlBarAlpha=0.7&controlBarPrimaryColor=0xFFFFFF&controlBarSecondaryColor=0x000000&navigationControls=true&slideShowControls=true&fullScreenButton=true&showImageIndex=true&showImageInfos=true&scaleMode=scale&leftRightMargin=10&topBottomMargin=0&preloaderPosition=centered" />
+		<!--[if !IE]>-->
+		<object type="application/x-shockwave-flash" data="SimpleScale.swf" width="700" height="300">
+		<!--<![endif]-->
+			<param name="flashvars" value="domainKeys=&source=https%3A//picasaweb.google.com/data/feed/base/user/112981794336081483787/albumid/5865836393885714337%3Falt%3Drss%26kind%3Dphoto%26hl%3Den_US&audioFile=&audioPlayerIcon=speaker&audioPlayerColor=0xFFFFFF&loopAudio=true&audioPlayMode=audioOff&autoSlideShow=true&slideShowSpeed=6&backgroundVisible=false&backgroundColor=0x666666&backgroundImage=&scaleBackground=true&loadOriginalImages=false&autoHideControls=false&controlsHideSpeed=2&controlBarAlpha=0.7&controlBarPrimaryColor=0xFFFFFF&controlBarSecondaryColor=0x000000&navigationControls=true&slideShowControls=true&fullScreenButton=true&showImageIndex=true&showImageInfos=true&scaleMode=scale&leftRightMargin=10&topBottomMargin=0&preloaderPosition=centered" />
+			<param name="allowFullScreen" value="true">
+			<param name="allowScriptAccess" value="always">
+			<param name="wmode" value="transparent">
+			<param name="bgcolor" value="#1C1C1C">
+		<!--[if !IE]>-->
+		</object>
+		<!--<![endif]-->
+	</object>
+</div>
